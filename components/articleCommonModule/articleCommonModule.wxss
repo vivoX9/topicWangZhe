@@ -1,0 +1,62 @@
+/* components/articleCommonModule/articleCommonModule.wxss */
+.item {
+  padding-top: 40rpx;
+}
+
+.top-module {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.top-left {
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+}
+
+.top-left image {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  vertical-align: bottom;
+  margin-right: 20rpx;
+}
+
+.top-right {
+  font-size: 14px;
+  color: #999;
+}
+
+.content {
+  padding-top: 20rpx;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.msg-module {
+  margin-top: 30rpx;
+  display: flex;
+  align-items: center;
+  padding: 26rpx 0;
+  border-top: 1px solid #eee;
+}
+
+.msg-module>view {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  width: calc(100% / 3);
+  justify-content: center;
+}
+
+.msg-common-module image {
+  width: 45rpx;
+  height: 45rpx;
+  vertical-align: bottom;
+}
+
+.msg-common-module text {
+  font-size: 12px;
+  padding-left: 8rpx;
+}
