@@ -10,41 +10,25 @@
 				<view class="top-right">发布于{{item.create_time}}</view>
 			</view>
 			<view class="content-module">
-<<<<<<< HEAD
 				<view class="content" bindtap="toDetail" data-item="{{item}}">{{showAllContent?item.content:item.handle_content}}</view>
-=======
-				<view class="content">{{showAllContent?item.content:item.handle_content}}</view>
->>>>>>> 49c729e0e666f004629e5b912967b1849e587443
 				<view wx:if="{{item.showAll}}">
 					<view class="show-check" wx:if="{{item.showAll&&!showAllContent}}" bindtap="showAllContent">展开所有内容</view>
 					<view class="show-check" wx:else bindtap="showAllContent">收起</view>
 				</view>
 			</view>
 			<view class="msg-module">
-<<<<<<< HEAD
 				<view class="like-module msg-common-module" bindtap="like" data-item="{{item}}">
 					<image src="{{item.has_like&&hasLike?'/assets/images/index/like-active.png':'/assets/images/index/like.png'}}"></image>
 					<text>{{item.has_like&&hasLike?'已点赞':'点赞'}}（{{item.like_count}}）</text>
-=======
-				<view class="like-module msg-common-module">
-					<image src="{{item.has_like?'/assets/images/index/like-active.png':'/assets/images/index/like.png'}}"></image>
-					<text>{{item.has_like?'已点赞':'点赞'}}（{{item.like_count}}）</text>
->>>>>>> 49c729e0e666f004629e5b912967b1849e587443
 				</view>
 				<view class="comment-module msg-common-module">
 					<image src="/assets/images/index/comment.png"></image>
 					<text>评论（{{item.comment_total_count}}）</text>
 				</view>
-<<<<<<< HEAD
 				<view class="share-module msg-common-module" bindtap="share">
 					<image src="/assets/images/index/share.png"></image>
 					<text>分享（{{item.share_count}}）</text>
 					<button open-type="share"></button>
-=======
-				<view class="share-module msg-common-module">
-					<image src="/assets/images/index/share.png"></image>
-					<text>分享（{{item.share_count}}）</text>
->>>>>>> 49c729e0e666f004629e5b912967b1849e587443
 				</view>
 			</view>
 		</view>
