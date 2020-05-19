@@ -1,5 +1,9 @@
 <!--mine/myArticle/myArticle.wxml-->
+<<<<<<< HEAD
 <view>
   {{numA}}
   <button bindtap="add">按钮</button>
 </view>
+=======
+<text>mine/myArticle/myArticle.wxml</text>
+>>>>>>> 49c729e0e666f004629e5b912967b1849e587443

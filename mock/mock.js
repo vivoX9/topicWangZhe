@@ -1,6 +1,10 @@
 //文章内容
+<<<<<<< HEAD
 export const articleList = [
   {
+=======
+export const articleList = [{
+>>>>>>> 49c729e0e666f004629e5b912967b1849e587443
     id: 1,
     type: 1, //文章类型
     title: "置顶数据", //问斩标题
@@ -34,7 +38,11 @@ export const articleList = [
     }]
   },
   {
+<<<<<<< HEAD
     id: 2,
+=======
+    id: 1,
+>>>>>>> 49c729e0e666f004629e5b912967b1849e587443
     type: 1, //文章类型
     title: "置顶数据",
     create_time: "20天前",
@@ -63,7 +71,11 @@ export const articleList = [
     }]
   },
   {
+<<<<<<< HEAD
     id: 3,
+=======
+    id: 1,
+>>>>>>> 49c729e0e666f004629e5b912967b1849e587443
     type: 1, //文章类型
     title: "置顶数据",
     create_time: "20天前",
@@ -92,7 +104,11 @@ export const articleList = [
     }]
   },
   {
+<<<<<<< HEAD
     id: 4,
+=======
+    id: 1,
+>>>>>>> 49c729e0e666f004629e5b912967b1849e587443
     type: 1, //文章类型
     title: "置顶数据",
     create_time: "20天前",
@@ -121,7 +137,11 @@ export const articleList = [
     }]
   },
   {
+<<<<<<< HEAD
     id: 5,
+=======
+    id: 1,
+>>>>>>> 49c729e0e666f004629e5b912967b1849e587443
     type: 1, //文章类型
     title: "置顶数据",
     create_time: "20天前",
@@ -150,7 +170,11 @@ export const articleList = [
     }]
   },
   {
+<<<<<<< HEAD
     id: 6,
+=======
+    id: 1,
+>>>>>>> 49c729e0e666f004629e5b912967b1849e587443
     type: 1, //文章类型
     title: "置顶数据",
     create_time: "20天前",
@@ -179,7 +203,11 @@ export const articleList = [
     }]
   },
   {
+<<<<<<< HEAD
     id: 7,
+=======
+    id: 1,
+>>>>>>> 49c729e0e666f004629e5b912967b1849e587443
     type: 1, //文章类型
     title: "置顶数据",
     create_time: "20天前",
@@ -208,7 +236,11 @@ export const articleList = [
     }]
   },
   {
+<<<<<<< HEAD
     id: 8,
+=======
+    id: 1,
+>>>>>>> 49c729e0e666f004629e5b912967b1849e587443
     type: 1, //文章类型
     title: "置顶数据",
     create_time: "20天前",
@@ -237,7 +269,11 @@ export const articleList = [
     }]
   },
   {
+<<<<<<< HEAD
     id: 9,
+=======
+    id: 1,
+>>>>>>> 49c729e0e666f004629e5b912967b1849e587443
     type: 1, //文章类型
     title: "置顶数据",
     create_time: "20天前",

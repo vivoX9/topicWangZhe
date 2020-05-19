@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import {
   createStoreBindings,
 } from 'mobx-miniprogram-bindings'
@@ -7,6 +8,8 @@ import {
 import {
   action
 } from 'mobx-miniprogram'
+=======
+>>>>>>> 49c729e0e666f004629e5b912967b1849e587443
 export const formatTime = date => {
   const year = date.getFullYear()
   const month = date.getMonth() + 1
@@ -25,6 +28,7 @@ export const formatNumber = n => {
 // 设置本地缓存，同步
 export const setStorageSync = (key, data) => {
   wx.setStorageSync(key, data)
+<<<<<<< HEAD
 }
 
 // 封装mobx函数创建方法
@@ -54,3 +58,6 @@ export const updateMobxNow = (_this) => {
 //     }
 //   )
 // }
+=======
+}
+>>>>>>> 49c729e0e666f004629e5b912967b1849e587443

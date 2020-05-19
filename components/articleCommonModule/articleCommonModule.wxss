@@ -50,6 +50,7 @@
   justify-content: center;
 }
 
+<<<<<<< HEAD
 .share-module {
   position: relative;
 }
@@ -64,6 +65,8 @@
   opacity: 0;
 }
 
+=======
+>>>>>>> 49c729e0e666f004629e5b912967b1849e587443
 .msg-common-module image {
   width: 45rpx;
   height: 45rpx;
@@ -73,8 +76,11 @@
 .msg-common-module text {
   font-size: 12px;
   padding-left: 8rpx;
+<<<<<<< HEAD
 }
 
 .show-check {
   color: rgb(3, 104, 255);
+=======
+>>>>>>> 49c729e0e666f004629e5b912967b1849e587443
 }

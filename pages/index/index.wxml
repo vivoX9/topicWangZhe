@@ -13,8 +13,13 @@
 					</swiper>
 				</view>
 				<view class="main">
+<<<<<<< HEAD
 					<view class="main-title" bindtap="updateLikeCount">帖子</view>
 					<articleCommonModule></articleCommonModule>
+=======
+					<view class="main-title">帖子</view>
+					<articleCommonModule articleListData="{{articleList}}"></articleCommonModule>
+>>>>>>> 49c729e0e666f004629e5b912967b1849e587443
 				</view>
 			</van-tab>
 		</van-tabs>

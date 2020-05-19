@@ -2,8 +2,13 @@
   "pages": [
     "pages/index/index",
     "pages/mine/mine",
+<<<<<<< HEAD
     "components/articleCommonModule/articleCommonModule",
     "index/articleDetail"
+=======
+    
+    "components/articleCommonModule/articleCommonModule"
+>>>>>>> 49c729e0e666f004629e5b912967b1849e587443
   ],
   "subpackages": [
     {

@@ -11,7 +11,10 @@
 		"minified": true,
 		"newFeature": true,
 		"coverView": true,
+<<<<<<< HEAD
 		"nodeModules": true,
+=======
+>>>>>>> 49c729e0e666f004629e5b912967b1849e587443
 		"autoAudits": false,
 		"showShadowRootInWxmlPanel": true,
 		"scopeDataCheck": false,
@@ -22,7 +25,12 @@
 			"ignore": [],
 			"disablePlugins": [],
 			"outputPath": ""
+<<<<<<< HEAD
 		}
+=======
+		},
+		"nodeModules": true
+>>>>>>> 49c729e0e666f004629e5b912967b1849e587443
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.11.0",
