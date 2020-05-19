@@ -1,0 +1,7 @@
+<!--index/articleDetail.wxml-->
+<view class="detail">
+  <view>
+    {{articleDataCurrent.like_count}}
+    <button bindtap="like">按钮</button>
+  </view>
+</view>

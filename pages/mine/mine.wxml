@@ -1,0 +1,24 @@
+<!--pages/mine/mine.wxml-->
+<view class="mine">
+	<view class="user-msg" wx:if="{{userInfo===''}}">
+		<image src="/assets/images/common/null-user-headicon.png"></image>
+		<text>点击授权</text>
+		<button open-type="getUserInfo" bindgetuserinfo="getUserInfo" class="get-user-info"></button>
+	</view>
+	<view wx:else class="user-login-msg">
+		<image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+		<text class="userinfo-nickname">{{userInfo.nickName}}</text>
+	</view>
+	<view class="list">
+		<view class="common-line" bindtap="{{userInfo===''?'':'toMyArticle'}}">
+			<view class="common-line-left">
+				<image src="/assets/images/mine/mine-article.png"></image>
+				<text>我的发帖</text>
+			</view>
+			<view class="common-line-right">
+				<image src="/assets/images/common/arrow.png"></image>
+			</view>
+			<button wx:if="{{userInfo===''}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo" class="get-user-info"></button>
+		</view>
+	</view>
+</view>

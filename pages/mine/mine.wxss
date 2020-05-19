@@ -1,0 +1,90 @@
+/* pages/mine/mine.wxss */
+.mine {
+  min-height: 100vh;
+  background: #f9f9f9;
+}
+
+/* 用户信息区域 */
+.user-msg,
+.user-login-msg {
+  width: fit-content;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  padding-top: 100rpx;
+  padding-bottom: 50rpx;
+  height: 240rpx;
+}
+
+.user-msg image {
+  width: 160rpx;
+  height: 160rpx;
+  vertical-align: bottom;
+  border-radius: 50%;
+}
+
+.user-msg text {
+  font-size: 20px;
+}
+
+.userinfo-nickname {
+  font-size: 20px;
+}
+
+.get-user-info {
+  width: 100% !important;
+  height: 100%;
+  opacity: 0;
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+  padding: 0;
+}
+
+.user-login-msg image {
+  width: 160rpx;
+  height: 160rpx;
+  vertical-align: bottom;
+  border-radius: 50%;
+}
+
+/* 功能列表区域 */
+.list {
+  padding: 0 40rpx;
+}
+
+.common-line {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #ccc;
+  padding: 30rpx 0;
+  position: relative;
+}
+
+.common-line-left {
+  display: flex;
+  align-items: center;
+}
+
+.common-line-left image {
+  width: 60rpx;
+  height: 60rpx;
+}
+
+.common-line-left text {
+  font-size: 20px;
+  padding-left: 16rpx;
+}
+
+.common-line-right {}
+
+.common-line-right image {
+  width: 24rpx;
+  height: 30rpx;
+  vertical-align: bottom;
+}

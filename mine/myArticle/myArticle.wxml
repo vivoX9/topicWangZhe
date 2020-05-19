@@ -1,0 +1,5 @@
+<!--mine/myArticle/myArticle.wxml-->
+<view>
+  {{numA}}
+  <button bindtap="add">按钮</button>
+</view>
