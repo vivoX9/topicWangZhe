@@ -32,7 +32,7 @@ Component({
     toDetail(e) {
       this.updateCurrentArticle(e.currentTarget.dataset.item).then(() => {
         wx.navigateTo({
-          url: '/index/articleDetail'
+          url: '/index/articleDetail/articleDetail'
         })
       })
 

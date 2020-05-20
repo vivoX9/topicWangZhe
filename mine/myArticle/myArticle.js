@@ -1,33 +1,21 @@
-<<<<<<< HEAD
 import {
   createMobx,
   destyoyMobx
 } from "../../utils/util"
-=======
-// mine/myArticle/myArticle.js
->>>>>>> 49c729e0e666f004629e5b912967b1849e587443
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-<<<<<<< HEAD
     someData: '...'
-=======
-
->>>>>>> 49c729e0e666f004629e5b912967b1849e587443
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-<<<<<<< HEAD
     this.storeBindings = createMobx(this, ["numA"], ["add"])
-=======
-
->>>>>>> 49c729e0e666f004629e5b912967b1849e587443
   },
 
   /**
@@ -55,11 +43,7 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-<<<<<<< HEAD
     destyoyMobx(this)
-=======
-
->>>>>>> 49c729e0e666f004629e5b912967b1849e587443
   },
 
   /**

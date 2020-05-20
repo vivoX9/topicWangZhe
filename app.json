@@ -1,8 +1,7 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/mine/mine",
-    "components/articleCommonModule/articleCommonModule"
+    "pages/mine/mine"
   ],
   "subpackages": [
     {
