@@ -1,4 +1,4 @@
-import { createMobx,destoryMobx } from "../utils/util"
+import { createMobx,destoryMobx } from "../../utils/util"
 Page({
 
   /**

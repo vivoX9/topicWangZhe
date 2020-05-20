@@ -4,38 +4,21 @@
 		"ignore": []
 	},
 	"setting": {
-		"urlCheck": false,
+		"urlCheck": true,
 		"es6": true,
 		"postcss": true,
 		"preloadBackgroundData": false,
 		"minified": true,
 		"newFeature": true,
-		"coverView": true,
-<<<<<<< HEAD
-		"nodeModules": true,
-=======
->>>>>>> 49c729e0e666f004629e5b912967b1849e587443
 		"autoAudits": false,
+		"coverView": true,
 		"showShadowRootInWxmlPanel": true,
-		"scopeDataCheck": false,
-		"checkInvalidKey": true,
-		"checkSiteMap": true,
-		"uploadWithSourceMap": true,
-		"babelSetting": {
-			"ignore": [],
-			"disablePlugins": [],
-			"outputPath": ""
-<<<<<<< HEAD
-		}
-=======
-		},
-		"nodeModules": true
->>>>>>> 49c729e0e666f004629e5b912967b1849e587443
+		"scopeDataCheck": false
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.11.0",
-	"appid": "wxee3c57d2b3cd88e9",
-	"projectname": "web",
+	"appid": "wxd18e75b9d9323d8c",
+	"projectname": "miniprogram-1",
 	"debugOptions": {
 		"hidedInDevtools": []
 	},
