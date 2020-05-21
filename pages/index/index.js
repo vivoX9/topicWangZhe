@@ -27,6 +27,11 @@ Page({
     this.initData()
     this.storeBindings = createMobx(this,["numA"],['updateLikeCount'])
   },
+  onShow:function(){
+    // wx.navigateTo({
+    //   url: '/index/articleDetail/articleDetail',
+    // })
+  },
   onUnload:function(){
     destyoyMobx(this)
   }

@@ -5,6 +5,7 @@ export const articleList = [
     type: 1, //文章类型
     title: "置顶数据", //问斩标题
     isVip: true, //是否置顶
+    create_specific_time:"2020-09-29 20:21",//具体的发布时间
     create_time: "20天前", //发布时间
     like_count: 20, //点赞数
     share_count: 100, //分享数

@@ -35,7 +35,6 @@ Component({
           url: '/index/articleDetail/articleDetail'
         })
       })
-
     },
     // 点赞
     like(e) {

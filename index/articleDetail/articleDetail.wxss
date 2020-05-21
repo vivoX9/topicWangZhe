@@ -1,1 +1,84 @@
 /* index/articleDetail.wxss */
+.detail {
+  min-height: 100vh;
+  background: #dce4e4;
+}
+
+.title {
+  padding: 0 30rpx;
+  padding-top: 40rpx;
+  background: #fff;
+}
+
+.main-title {
+  font-size: 24px;
+  color: #333;
+  padding-bottom: 20rpx;
+}
+
+.headicon {
+  display: flex;
+  align-items: center;
+}
+
+.headicon image {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+}
+
+.headicon text {
+  margin-left: 20rpx;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.user-msg {
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+  color: #999;
+  padding-top: 30rpx;
+  padding-bottom: 30rpx;
+}
+
+/* 文章主体 */
+.main {
+  background: #fff;
+  padding: 0 30rpx;
+  padding-bottom: 40rpx;
+}
+
+.main-text {
+  font-size: 16px;
+  text-align: justify;
+}
+
+.bottom-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 40rpx;
+}
+
+.like-module {
+  display: flex;
+  align-items: center;
+}
+
+.like-module image {
+  width: 20rpx;
+  height: 20rpx;
+  vertical-align: bottom;
+  margin-right: 8rpx;
+}
+
+.like-module text {
+  font-size: 14px;
+  color: #999;
+}
+
+.explain-module {
+  font-size: 12px;
+  color: #999;
+}

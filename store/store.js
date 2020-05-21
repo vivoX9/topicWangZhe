@@ -19,20 +19,25 @@ export const store = observable({
   }),
   // 更新文章喜欢数据
   updateLike: action(function (e) {
-    for(let i in articleList){
-      if(articleList[i].id===e.id){
-        if(e.has_like){
-          e.like_count-=1
-        }else{
-          e.like_count+=1
+    return new Promise(resolve=>{
+      for(let i in articleList){
+        if(articleList[i].id===e.id){
+          if(e.has_like){
+            e.like_count-=1
+          }else{
+            e.like_count+=1
+          }
+          e.has_like=!e.has_like
+          articleList[i]=e
+          this.updateCurrentArticle(e).then((res)=>{
+            resolve(res)
+          })
+          break
         }
-        e.has_like=!e.has_like
-        articleList[i]=e
-        this.updateCurrentArticle(e)
-        break
       }
-    }
-    this.articleListData=articleList
+      this.articleListData=articleList
+    })
+    
   }),
 
   // 更新当前详情页文章

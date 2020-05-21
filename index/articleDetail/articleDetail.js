@@ -9,8 +9,12 @@ Page({
   },
   // 点赞
   like(){
-    this.updateLike(this.data.articleDataCurrent)
-    this.updateCurrentArticle(this.data.articleDataCurrent)
+    // 更新当前文章数据
+    this.updateLike(this.data.articleDataCurrent).then(res=>{
+      this.setData({
+        articleDataCurrent:res
+      })
+    })
   },
   /**
    * 生命周期函数--监听页面加载
@@ -45,7 +49,7 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+    destoryMobx()
   },
 
   /**

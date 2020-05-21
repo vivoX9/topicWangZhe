@@ -1,0 +1,76 @@
+/* components/commentModule/commentModule.wxss */
+.comment-main {
+  padding: 0 30rpx;
+  padding-top: 40rpx;
+
+}
+
+.comment-title {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 30rpx;
+}
+
+.comment-title text:first-child {
+  font-size: 14px;
+}
+
+.comment-title text:last-child {
+  font-size: 14px;
+}
+
+.comment-item {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 40rpx;
+  margin-bottom: 40rpx;
+  border-bottom: 0.5px solid #eee;
+}
+
+.comment-item-left image {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  vertical-align: bottom;
+}
+
+.comment-item-right {
+  display: flex;
+  flex-direction: column;
+  width: calc(100% - 100rpx);
+}
+
+.comment-item-top {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 16rpx;
+}
+
+.comment-item-top-left {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.comment-like {
+  display: flex;
+  align-items: center;
+}
+
+.comment-like image {
+  width: 20rpx;
+  height: 20rpx;
+  vertical-align: bottom;
+  margin-right: 8rpx;
+}
+
+.comment-item-middle {
+  font-size: 14px;
+  color: #333;
+  padding-bottom: 16rpx;
+  text-align: justify;
+}
+
+.comment-item-bottom {
+  font-size: 12px;
+  color: #999;
+}

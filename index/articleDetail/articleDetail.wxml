@@ -1,7 +1,33 @@
 <!--index/articleDetail.wxml-->
 <view class="detail">
-  <view>
-    {{articleDataCurrent.like_count}}
-    <button bindtap="like">按钮</button>
-  </view>
+	<view class="title">
+		<view class="main-title">{{articleDataCurrent.title}}</view>
+		<view class="sub-title">
+			<view class="headicon">
+				<image src="{{articleDataCurrent.user_info.avatar}}"></image>
+				<text>{{articleDataCurrent.user_info.nickname}}</text>
+			</view>
+			<view class="user-msg">
+				<text class="user-time" decode="true">{{articleDataCurrent.create_specific_time}}</text>
+				<text class="text-num" decode="true">&nbsp;阅读:{{articleDataCurrent.comment_total_count}}</text>
+			</view>
+		</view>
+	</view>
+	<view class="main">
+		<view class="main-text">{{articleDataCurrent.content}}</view>
+		<view class="bottom-line">
+			<view class="like-module" bindtap="like">
+				<image src=""></image>
+				<text>{{articleDataCurrent.like_count}}</text>
+			</view>
+			<view class="explain-module">
+				<text>©著作权归作者所有</text>
+			</view>
+		</view>
+	</view>
+	<view class="comment-module">
+		<view class="comment-component">
+			<commentModule></commentModule>
+		</view>
+	</view>
 </view>

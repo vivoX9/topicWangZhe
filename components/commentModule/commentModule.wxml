@@ -1,0 +1,34 @@
+<!--components/commentModule/commentModule.wxml-->
+<view class="comment-main">
+	<view class="comment-title">
+		<text>{{articleDataCurrent.comment_total_count}}条评论</text>
+		<text>写评论</text>
+	</view>
+  <view class="comment-list">
+    <view class="comment-item" wx:for="{{articleDataCurrent.comments}}" wx:key="index">
+      <view class="comment-item-left">
+        <image src="{{item.user_info.avatar}}"></image>
+      </view>
+      <view class="comment-item-right">
+        <view class="comment-item-top">
+          <view class="comment-item-top-left">
+            {{item.user_info.name}}
+          </view>
+          <view class="comment-item-top-right">
+            <view class="comment-like">
+              <image src=""></image>
+              <text>{{item.comment_like_count}}</text>
+            </view>
+          </view>
+        </view>
+        <view class="comment-item-middle">
+          {{item.comment_content}}
+        </view>
+        <view class="comment-item-bottom">
+          <text decode="true">{{item.comment_floor}}楼&nbsp;·&nbsp;</text>
+          <text decode="true">{{item.comment_time}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
