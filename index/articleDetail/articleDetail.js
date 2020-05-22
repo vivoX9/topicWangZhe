@@ -1,11 +1,12 @@
-import { createMobx,destoryMobx } from "../../utils/util"
+import { createMobx,destroyMobx } from "../../utils/util"
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    loveSrc:"https://wzrylt.oss-cn-beijing.aliyuncs.com/miniWeb/love.png",
+    unloveSrc:"https://wzrylt.oss-cn-beijing.aliyuncs.com/miniWeb/%E5%96%9C%E6%AC%A2.png"
   },
   // 点赞
   like(){
@@ -20,7 +21,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    createMobx(this,['articleListData','articleDataCurrent'],['updateLike','initArticle','updateCurrentArticle'])
+    this.storeBindings=createMobx(this,['articleListData','articleDataCurrent'],['updateLike','initArticle','updateCurrentArticle'])
     this.initArticle()
   },
 
@@ -49,7 +50,7 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-    destoryMobx()
+    destroyMobx(this)
   },
 
   /**

@@ -15,8 +15,8 @@
             {{item.user_info.name}}
           </view>
           <view class="comment-item-top-right">
-            <view class="comment-like">
-              <image src=""></image>
+            <view class="comment-like" bindtap="like" data-item="{{item}}">
+              <image src="{{item.has_like?commentLike:commentUnlike}}"></image>
               <text>{{item.comment_like_count}}</text>
             </view>
           </view>

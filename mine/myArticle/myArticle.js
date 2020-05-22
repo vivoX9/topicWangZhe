@@ -1,6 +1,6 @@
 import {
   createMobx,
-  destyoyMobx
+  destroyMobx
 } from "../../utils/util"
 Page({
 
@@ -43,7 +43,7 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-    destyoyMobx(this)
+    destroyMobx(this)
   },
 
   /**

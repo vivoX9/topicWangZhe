@@ -67,14 +67,15 @@
 }
 
 .like-module image {
-  width: 20rpx;
-  height: 20rpx;
+  width: 34rpx;
+  height: 34rpx;
   vertical-align: bottom;
   margin-right: 8rpx;
 }
 
 .like-module text {
   font-size: 14px;
+  line-height: 14px;
   color: #999;
 }
 

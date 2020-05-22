@@ -1,4 +1,4 @@
-import { createMobx,destyoyMobx } from '../../utils/util'
+import { createMobx,destroyMobx } from '../../utils/util'
 //获取应用实例
 const app = getApp()
 import {navibarList,bannerList} from "../../mock/mock"
@@ -33,6 +33,6 @@ Page({
     // })
   },
   onUnload:function(){
-    destyoyMobx(this)
+    destroyMobx(this)
   }
 })

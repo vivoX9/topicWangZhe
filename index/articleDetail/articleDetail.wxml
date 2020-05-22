@@ -17,7 +17,8 @@
 		<view class="main-text">{{articleDataCurrent.content}}</view>
 		<view class="bottom-line">
 			<view class="like-module" bindtap="like">
-				<image src=""></image>
+				<image src="{{loveSrc}}" wx:if="{{articleDataCurrent.has_like}}"></image>
+				<image src="{{unloveSrc}}" wx:else></image>
 				<text>{{articleDataCurrent.like_count}}</text>
 			</view>
 			<view class="explain-module">

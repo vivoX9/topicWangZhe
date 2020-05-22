@@ -1,6 +1,6 @@
 import {
   createMobx,
-  destyoyMobx
+  destroyMobx
 } from "../../utils/util"
 Component({
   /**
@@ -58,6 +58,6 @@ Component({
 
   },
   detached() {
-    destyoyMobx(this)
+    destroyMobx(this)
   }
 })

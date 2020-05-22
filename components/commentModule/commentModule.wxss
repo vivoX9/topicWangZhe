@@ -57,8 +57,8 @@
 }
 
 .comment-like image {
-  width: 20rpx;
-  height: 20rpx;
+  width: 30rpx;
+  height: 30rpx;
   vertical-align: bottom;
   margin-right: 8rpx;
 }

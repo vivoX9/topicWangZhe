@@ -37,7 +37,7 @@ export const createMobx = (_this, fields = [], actions = []) => {
 }
 
 // 封装mobx函数卸载方法
-export const destyoyMobx = (_this) => {
+export const destroyMobx = (_this) => {
   _this.storeBindings.destroyStoreBindings()
 }
 

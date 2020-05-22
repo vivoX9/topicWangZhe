@@ -8,7 +8,7 @@ import {
 import articlePayList from "../utils/util"
 export const store = observable({
   articleListData: [], //文章列表
-  articleDataCurrent:{},//当前详情页文章
+  articleDataCurrent: {}, //当前详情页文章
   // 初始化文章列表数据
   initArticle: action(function () {
     articleList.forEach(element => {
@@ -17,33 +17,58 @@ export const store = observable({
     });
     this.articleListData = articleList
   }),
+
   // 更新文章喜欢数据
   updateLike: action(function (e) {
-    return new Promise(resolve=>{
-      for(let i in articleList){
-        if(articleList[i].id===e.id){
-          if(e.has_like){
-            e.like_count-=1
-          }else{
-            e.like_count+=1
+    return new Promise(resolve => {
+      for (let i in articleList) {
+        if (articleList[i].id === e.id) {
+          if (e.has_like) {
+            e.like_count -= 1
+          } else {
+            e.like_count += 1
           }
-          e.has_like=!e.has_like
-          articleList[i]=e
-          this.updateCurrentArticle(e).then((res)=>{
+          e.has_like = !e.has_like
+          articleList[i] = e
+          this.articleListData=articleList
+          this.updateCurrentArticle(e).then((res) => {
             resolve(res)
           })
-          break
+          return
         }
       }
-      this.articleListData=articleList
     })
-    
+
+  }),
+
+  // 更新文章评论喜欢数据
+  updateCommentLike: action(function (e) {
+    return new Promise(resolve => {
+      for (let i=0;i<articleList.length;i++) {
+        for (let j=0;j<articleList[i].comments.length;j++) {
+          if (articleList[i].comments[j].id === e.id) {
+            if (e.has_like) {
+              e.comment_like_count -= 1
+            } else {
+              e.comment_like_count += 1
+            }
+            e.has_like = !e.has_like
+            articleList[i].comments[j] = e
+            this.articleListData=articleList
+            this.updateCurrentArticle(articleList[i]).then((res) => {
+              resolve(res)
+            })
+            return
+          }
+        }
+      }
+    })
   }),
 
   // 更新当前详情页文章
-  updateCurrentArticle:action(function(res){
-    return new Promise(resolve=>{
-      this.articleDataCurrent=res
+  updateCurrentArticle: action(function (res) {
+    return new Promise(resolve => {
+      this.articleDataCurrent = res
       resolve(res)
     })
   })
