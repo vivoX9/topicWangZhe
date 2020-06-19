@@ -1,4 +1,5 @@
 {
+  "navigationBarTitleText":"文章详情",
   "usingComponents": {
       "commentModule":"/components/commentModule/commentModule"
   }

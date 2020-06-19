@@ -3,7 +3,8 @@ import {
   CACHE_KEY
 } from "../../lib/config"
 import {
-  setStorageSync
+  setStorageSync,
+  getStorageSync
 } from "../../utils/util"
 Page({
 
@@ -15,7 +16,7 @@ Page({
     userInfo: ""
   },
   // 去往我的发帖
-  toMyArticle(e){
+  toMyArticle(e) {
     wx.navigateTo({
       url: '/mine/myArticle/myArticle',
     })
@@ -25,14 +26,46 @@ Page({
     this.setData({
       userInfo: e.detail.userInfo
     })
-    setStorageSync(CACHE_KEY.userInfo, e.detail.userInfo)
+    let userInfo = e.detail.userInfo
+    wx.login({
+      success: res => {
+        // 发送 res.code 到后台换取 openId, sessionKey, unionId
+        wx.request({
+          url: 'https://www.wzrylt.com/api/login',
+          // url: 'http://172.17.8.162:5050/api/login',
+          data: {
+            nick_name: userInfo.nickName,
+            avatar: userInfo.avatarUrl,
+            sex: userInfo.gender,
+            country: userInfo.country,
+            city: userInfo.city,
+            province: userInfo.province,
+            code: res.code
+          },
+          method: "POST",
+          header: {
+            'content-type': 'application/json', // 默认值
+            'token': getStorageSync(CACHE_KEY.userInfo) ? getStorageSync(CACHE_KEY.userInfo).token : ''
+          },
+          success(res1) {
+            console.log(res1)
+            if (res1.data.status === 200) {
+              console.log(11)
+              setStorageSync(CACHE_KEY.userInfo, res1.data.data)
+            }
+          }
+        })
+      }
+    })
+
+
   },
   // 加载页面时，获取本地用户信息
   getLocalUserInfo() {
-    let result=wx.getStorageSync(CACHE_KEY.userInfo)
-    if(result){
+    let result = wx.getStorageSync(CACHE_KEY.userInfo)
+    if (result) {
       this.setData({
-        userInfo:result
+        userInfo: result
       })
     }
   },

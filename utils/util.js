@@ -4,9 +4,7 @@ import {
 import {
   store
 } from '../store/store'
-import {
-  action
-} from 'mobx-miniprogram'
+import {CACHE_KEY} from "../lib/config"
 export const formatTime = date => {
   const year = date.getFullYear()
   const month = date.getMonth() + 1
@@ -25,6 +23,11 @@ export const formatNumber = n => {
 // 设置本地缓存，同步
 export const setStorageSync = (key, data) => {
   wx.setStorageSync(key, data)
+}
+
+// 获取本地缓存，同步
+export const getStorageSync=key=>{
+  return wx.getStorageSync(key)
 }
 
 // 封装mobx函数创建方法
@@ -46,11 +49,18 @@ export const updateMobxNow = (_this) => {
   _this.storeBindings.updateStoreBindings()
 }
 
-// export default // 更新喜欢数据
-// {
-//   updateLike: action(
-//     function () {
-//       console.log(121)
-//     }
-//   )
-// }
+// 封装是否登陆检测
+export const isLogin=()=>{
+  let data=""
+  wx.getStorage({
+    key: CACHE_KEY.userInfo,
+    success (res) {
+      data=res.data
+    },
+    fail:(res)=>{
+      data=false
+    }
+  })
+  return data
+}
+

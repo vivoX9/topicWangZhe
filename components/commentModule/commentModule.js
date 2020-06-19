@@ -1,7 +1,7 @@
 // components/commentModule/commentModule.js
 import {
   createMobx,
-  destroyMobx
+  isLogin
 } from "../../utils/util"
 Component({
   /**
@@ -22,9 +22,6 @@ Component({
     //初始化文章数据
     createMobx(this, ['articleListData','articleDataCurrent'], ['initArticle', 'updateLike', 'updateCurrentArticle','updateCommentLike'])
     this.initArticle()
-    setTimeout(() => {
-      console.log(this.data.articleDataCurrent)
-    }, 3000);
   },
   /**
    * 组件的方法列表
@@ -32,6 +29,8 @@ Component({
   methods: {
     // 点赞评论
     like(e){
+      let data=isLogin()
+      console.log(data)
       let item = e.currentTarget.dataset.item
       this.updateCommentLike(item).then(res=>{
         this.setData({

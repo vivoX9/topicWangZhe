@@ -1,0 +1,4 @@
+images为所有图片文件集合
+  -common:公共常用icon
+  -index:首页tab及其子目录所有icon
+  -mine:我的tab及其子目录所有icon

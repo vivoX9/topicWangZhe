@@ -13,6 +13,7 @@
 					</swiper>
 				</view>
 				<view class="main">
+					<button bindtap="pay">立即支付</button>
 					<view class="main-title" bindtap="updateLikeCount">帖子</view>
 					<articleCommonModule></articleCommonModule>
 				</view>

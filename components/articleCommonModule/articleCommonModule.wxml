@@ -17,11 +17,12 @@
 				</view>
 			</view>
 			<view class="msg-module">
-				<view class="like-module msg-common-module" bindtap="like" data-item="{{item}}">
-					<image src="{{item.has_like&&hasLike?'https://wzrylt.oss-cn-beijing.aliyuncs.com/miniWeb/like-active.png':'https://wzrylt.oss-cn-beijing.aliyuncs.com/miniWeb/like.png'}}"></image>
+				<view class="like-module msg-common-module" bindtap="{{userInfo===null?'':'like'}}" data-item="{{item}}">
+					<image src="{{item.has_like&&hasLike&&userInfo!==null?'https://wzrylt.oss-cn-beijing.aliyuncs.com/miniWeb/like-active.png':'https://wzrylt.oss-cn-beijing.aliyuncs.com/miniWeb/like.png'}}"></image>
 					<text>{{item.has_like&&hasLike?'已点赞':'点赞'}}（{{item.like_count}}）</text>
+					<button bindgetuserinfo="getUserInfo" open-type="getUserInfo" wx:if="{{userInfo===null}}"></button>
 				</view>
-				<view class="comment-module msg-common-module">
+				<view class="comment-module msg-common-module" bindtap="toDetail" data-item="{{item}}">
 					<image src="https://wzrylt.oss-cn-beijing.aliyuncs.com/miniWeb/comment.png"></image>
 					<text>评论（{{item.comment_total_count}}）</text>
 				</view>
