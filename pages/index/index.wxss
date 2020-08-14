@@ -25,3 +25,24 @@
   font-weight: bold;
   padding: 16rpx 0;
 }
+
+.upload {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  width: 160rpx;
+  height: 140rpx;
+  background: rgba(78, 56, 56, 0.2);
+  border-radius: 20rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  color: #888;
+}
+.upload image{
+  width: 80rpx;
+  height: 80rpx;
+  vertical-align: bottom;
+  z-index: 100;  
+}

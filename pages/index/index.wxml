@@ -17,6 +17,10 @@
 					<view class="main-title" bindtap="updateLikeCount">帖子</view>
 					<articleCommonModule></articleCommonModule>
 				</view>
+				<view class="upload" bindtap="uploadImg">
+					<image src="../../assets/images/index/pic-1.png"></image>
+					<text>上传图片</text>
+				</view>
 			</van-tab>
 		</van-tabs>
 	</view>

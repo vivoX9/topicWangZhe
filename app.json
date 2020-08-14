@@ -13,7 +13,8 @@
     {
       "root": "index",
       "pages": [
-        "articleDetail/articleDetail"
+        "articleDetail/articleDetail",
+        "upload/upload"
       ]
     }
   ],

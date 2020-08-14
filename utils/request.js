@@ -1,33 +1,33 @@
-class request {
+export class requestData {
   constructor() {
     this.header = {}
   }
   // get方法
-  get(METHOD, DATA, HEADER = this.header) {
-    console.log(1)
-    return this.requestFun("GET", DATA, HEADER)
+  get(URL,DATA, HEADER = this.header) {
+    return this.requestFun(URL,"GET", DATA, HEADER)
   }
   // post方法
-  post(METHOD, DATA, HEADER = this.header) {
-    this.requestFun("POST", DATA, HEADER)
+  post(URL,DATA, HEADER = this.header) {
+    this.requestFun(URL,"POST", DATA, HEADER)
   }
   // put方法
-  put(METHOD, DATA, HEADER = this.header) {
-    this.requestFun("PUT", DATA, HEADER)
+  put(URL,DATA, HEADER = this.header) {
+    this.requestFun(URL,"PUT", DATA, HEADER)
   }
   // delete方法
-  delete(METHOD, DATA, HEADER = this.header) {
-    this.requestFun("DELETE", DATA, HEADER)
+  delete(URL,DATA, HEADER = this.header) {
+    this.requestFun(URL,"DELETE", DATA, HEADER)
   }
   // 请求封装
-  requestFun(METHOD, DATA, HEADER = this.header, ) {
+  requestFun(URL,METHOD, DATA, HEADER = this.header) {
     return new Promise((resolve, reject) => {
       wx.request({
         url: URL,
         data: DATA,
         header: HEADER,
         method: METHOD,
-        success: (res) => {
+        success: (result) => {
+          let res=result.data
           if (res.code === 200 || res.status === 200) {
             resolve(res)
           } else {
@@ -50,4 +50,3 @@ class request {
     })
   }
 }
-export default request

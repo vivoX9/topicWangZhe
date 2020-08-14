@@ -1,5 +1,6 @@
 //获取应用实例
 const app = getApp()
+
 import {
   createMobx,
   destroyMobx,
@@ -21,6 +22,12 @@ Page({
     circular: true, //是否衔接滑动
     bannerList: [],
     navibarList: []
+  },
+  // 上传图片
+  uploadImg(){
+    wx.navigateTo({
+      url: '/index/upload/upload',
+    })
   },
   // 支付
   pay() {
@@ -57,6 +64,7 @@ Page({
       }
     })
   },
+
   // 切换tabbar
   changeTab(e) {
     console.log(e)

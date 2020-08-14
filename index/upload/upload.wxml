@@ -1,0 +1,9 @@
+<!--index/upload/upload.wxml-->
+<view class="upload">
+  <view class="upload-box" bindtap="uploadImg">
+    <image src="/assets/images/index/pic-2.png"></image>
+  </view>
+   <view class="upload-box">
+    <image src="{{item}}" wx:for="{{previewList}}" wx:key="index" style="width:100%;height:100%;"></image>
+  </view>
+</view>

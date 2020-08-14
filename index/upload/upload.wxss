@@ -1,0 +1,16 @@
+/* index/upload/upload.wxss */
+.upload-box{
+  width: 200rpx;
+  height: 200rpx;
+  border-radius: 10rpx;
+  background: #eeeded;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.upload-box image{
+  width: 60rpx;
+  height: 60rpx;
+  vertical-align: bottom;
+}
