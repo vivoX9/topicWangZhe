@@ -8,10 +8,10 @@ Page({
    * 页面的初始数据
    */
   data: {
-    previewList:[]
+    previewList: []
   },
   // 上传图片
-  uploadImg() {
+  uploadImage() {
     wx.chooseImage({
       count: 9,
       success: (res) => {
@@ -20,20 +20,19 @@ Page({
           wx.uploadFile({
             filePath: res.tempFilePaths[0],
             name: "file",
-            url: 'http://127.0.0.1:8000/api/upload/img',
+            url: 'http://127.0.0.1:8080/api/upload/img',
             formData: {
               'image': 'test'
             },
             success: (res) => {
-              let data=JSON.parse(res.data)
+              let data = JSON.parse(res.data)
               wx.showToast({
-                title:"上传成功"
+                title: "上传成功"
               })
-              // console.log(data.data)
-              let list=this.data.previewList
+              let list = this.data.previewList
               list.push(data.data.src)
               this.setData({
-                previewList:list
+                previewList: list
               })
             }
           })

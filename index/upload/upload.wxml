@@ -1,9 +1,41 @@
-<!--index/upload/upload.wxml-->
-<view class="upload">
-  <view class="upload-box" bindtap="uploadImg">
-    <image src="/assets/images/index/pic-2.png"></image>
+<!-- index/upload/upload.wxml -->
+<!-- 需要文章标题,文章内容,图片内容 -->
+<view class="upload-cotainer">
+  <!-- 标题 -->
+  <view class="title title-common" hover-class="none" hover-stop-propagation="false">
+    <view class="title-top title-top-common" hover-class="none" hover-stop-propagation="false">
+      文章标题
+    </view>
+    <view class="title-bottom title-bottom-common" hover-class="none" hover-stop-propagation="false">
+      <input type="text" placeholder="请输入文章标题" />
+    </view>
   </view>
-   <view class="upload-box">
-    <image src="{{item}}" wx:for="{{previewList}}" wx:key="index" style="width:100%;height:100%;"></image>
+  <!-- 文章内容 -->
+  <view class="content title-common" hover-class="none" hover-stop-propagation="false">
+    <view class="content-top title-top-common" hover-class="none" hover-stop-propagation="false">
+      文章内容
+    </view>
+    <view class="content-bottom title-bottom-common" hover-class="none" hover-stop-propagation="false">
+      <textarea placeholder="请输入文章内容"></textarea>
+    </view>
+  </view>
+  <!-- 上传图片 -->
+  <view class="upload title-common" hover-class="none" hover-stop-propagation="false">
+    <view class="upload-title title-top-common" hover-class="none" hover-stop-propagation="false">
+      上传图片
+    </view>
+    <view class="image-box">
+      <image class="upload-list-item" src="{{item}}" wx:for="{{previewList}}" wx:key="index"
+        mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload=""></image>
+      <view class="upload-box" bindtap="uploadImage" hover-class="none" hover-stop-propagation="false"
+        wx:if="{{previewList.length<9}}">
+        <image class="upload-box-img" src="https://www.wzrylt.com/miniWeb/pic-2.png"
+          mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload=""></image>
+      </view>
+    </view>
+  </view>
+  <!-- 立即发布 -->
+  <view class="publish">
+    立即发布
   </view>
 </view>

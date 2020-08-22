@@ -18,7 +18,19 @@
 			<view class="common-line-right">
 				<image src="/assets/images/common/arrow.png"></image>
 			</view>
-			<button wx:if="{{userInfo===''}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo" class="get-user-info"></button>
+			<button wx:if="{{userInfo===''}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"
+				class="get-user-info"></button>
+		</view>
+		<view class="common-line" bindtap="{{userInfo===''?'':'toMyVisit'}}">
+			<view class="common-line-left">
+				<image src="/assets/images/mine/mine-article.png"></image>
+				<text>我的浏览</text>
+			</view>
+			<view class="common-line-right">
+				<image src="/assets/images/common/arrow.png"></image>
+			</view>
+			<button wx:if="{{userInfo===''}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"
+				class="get-user-info"></button>
 		</view>
 	</view>
 </view>
