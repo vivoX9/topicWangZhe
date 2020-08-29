@@ -18,16 +18,16 @@
 			</view>
 			<view class="msg-module">
 				<view class="like-module msg-common-module" bindtap="{{userInfo===null?'':'like'}}" data-item="{{item}}">
-					<image src="{{item.has_like&&hasLike&&userInfo!==null?'https://wzrylt.oss-cn-beijing.aliyuncs.com/miniWeb/like-active.png':'https://wzrylt.oss-cn-beijing.aliyuncs.com/miniWeb/like.png'}}"></image>
+					<image src="{{item.has_like&&hasLike&&userInfo!==null?'https://www.wzrylt.com/miniWeb/like-active.png':'https://www.wzrylt.com/miniWeb/like.png'}}"></image>
 					<text>{{item.has_like&&hasLike?'已点赞':'点赞'}}（{{item.like_count}}）</text>
 					<button bindgetuserinfo="getUserInfo" open-type="getUserInfo" wx:if="{{userInfo===null}}"></button>
 				</view>
 				<view class="comment-module msg-common-module" bindtap="toDetail" data-item="{{item}}">
-					<image src="https://wzrylt.oss-cn-beijing.aliyuncs.com/miniWeb/comment.png"></image>
+					<image src="https://www.wzrylt.com/miniWeb/comment.png"></image>
 					<text>评论（{{item.comment_total_count}}）</text>
 				</view>
 				<view class="share-module msg-common-module" bindtap="share">
-					<image src="https://wzrylt.oss-cn-beijing.aliyuncs.com/miniWeb/share.png"></image>
+					<image src="https://www.wzrylt.com/miniWeb/share.png"></image>
 					<text>分享（{{item.share_count}}）</text>
 					<button open-type="share"></button>
 				</view>

@@ -5,8 +5,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    loveSrc:"https://wzrylt.oss-cn-beijing.aliyuncs.com/miniWeb/love.png",
-    unloveSrc:"https://wzrylt.oss-cn-beijing.aliyuncs.com/miniWeb/%E5%96%9C%E6%AC%A2.png"
+    loveSrc:"https://www.wzrylt.com/miniWeb/love.png",
+    unloveSrc:"https://www.wzrylt.com/miniWeb/unlove.png"
   },
   // 点赞
   like(){
