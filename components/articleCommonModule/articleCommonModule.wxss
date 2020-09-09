@@ -30,8 +30,8 @@
 
 .content {
   padding-top: 20rpx;
-  font-size: 14px;
-  line-height: 20px;
+  font-size: 32rpx;
+  line-height: 48rpx;
 }
 
 .msg-module {

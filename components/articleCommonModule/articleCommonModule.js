@@ -81,8 +81,8 @@ Component({
   },
   created() {
     //初始化文章数据
-    createMobx(this, ['articleListData'], ['initArticle', 'updateLike', 'updateCurrentArticle'])
-    this.initArticle()
+    // createMobx(this, ['articleListData'], ['initArticle', 'updateLike', 'updateCurrentArticle'])
+    // this.initArticle()
     // 获取用户信息
     this.getLocalUserInfo()
   },
