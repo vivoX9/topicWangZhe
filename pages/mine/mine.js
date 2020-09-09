@@ -3,6 +3,9 @@ import {
   CACHE_KEY
 } from "../../lib/config"
 import {
+  getUserInfo
+} from "../../api/common"
+import {
   setStorageSync,
   getStorageSync
 } from "../../utils/util"
@@ -13,57 +16,52 @@ Page({
    */
   data: {
     isAuth: false,
-    userInfo: ""
+    userInfo: "",
+    hasLogin: false, //是否登录，false未登录
   },
+
   // 去往我的发帖
   toMyArticle(e) {
     wx.navigateTo({
       url: '/mine/myArticle/myArticle',
     })
   },
+
   // 点击授权
   getUserInfo(e) {
-    this.setData({
-      userInfo: e.detail.userInfo
-    })
     let userInfo = e.detail.userInfo
+    this.setData({
+      userInfo: userInfo
+    })
     wx.login({
       success: res => {
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
-        wx.request({
-          url: 'https://www.wzrylt.com/api/login',
-          // url: 'http://172.17.8.162:5050/api/login',
-          data: {
-            nick_name: userInfo.nickName,
-            avatar: userInfo.avatarUrl,
-            sex: userInfo.gender,
-            country: userInfo.country,
-            city: userInfo.city,
-            province: userInfo.province,
-            code: res.code
-          },
-          method: "POST",
-          header: {
-            'content-type': 'application/json', // 默认值
-            'token': getStorageSync(CACHE_KEY.userInfo) ? getStorageSync(CACHE_KEY.userInfo).token : ''
-          },
-          success(res1) {
-            console.log(res1)
-            if (res1.data.status === 200) {
-              console.log(11)
-              setStorageSync(CACHE_KEY.userInfo, res1.data.data)
-            }
-          }
+        let params = {
+          code: res.code,
+          nick_name: userInfo.nickName,
+          avatar: userInfo.avatarUrl,
+          sex: userInfo.gender,
+          country: userInfo.country,
+          province: userInfo.province,
+          city: userInfo.city,
+        }
+        getUserInfo(params).then(res => {
+          setStorageSync(CACHE_KEY.userInfo, JSON.stringify(res))
+          setStorageSync(CACHE_KEY.openid, res.open_id)
+          setStorageSync(CACHE_KEY.userid, res.id)
         })
       }
     })
   },
+
   // 加载页面时，获取本地用户信息
   getLocalUserInfo() {
-    let result = wx.getStorageSync(CACHE_KEY.userInfo)
-    if (result) {
+    let userInfo = getStorageSync(CACHE_KEY.userInfo) ? JSON.parse(getStorageSync(CACHE_KEY.userInfo)) : ''
+    if (userInfo) {
+      console.log(userInfo)
       this.setData({
-        userInfo: result
+        userInfo: userInfo,
+        hasLogin: true
       })
     }
   },
@@ -72,7 +70,7 @@ Page({
   toMyVisit() {
     console.log("去我的浏览")
   },
-  
+
   /**
    * 生命周期函数--监听页面加载
    */

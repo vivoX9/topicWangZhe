@@ -4,7 +4,10 @@ import {
 import {
   store
 } from '../store/store'
-import {CACHE_KEY} from "../lib/config"
+import {
+  CACHE_KEY
+} from "../lib/config"
+// 初始化时间
 export const formatTime = date => {
   const year = date.getFullYear()
   const month = date.getMonth() + 1
@@ -14,7 +17,7 @@ export const formatTime = date => {
   const second = date.getSeconds()
   return [year, month, day].map(formatNumber).join('/') + ' ' + [hour, minute, second].map(formatNumber).join(':')
 }
-
+// 数字补0
 export const formatNumber = n => {
   n = n.toString()
   return n[1] ? n : '0' + n
@@ -26,7 +29,7 @@ export const setStorageSync = (key, data) => {
 }
 
 // 获取本地缓存，同步
-export const getStorageSync=key=>{
+export const getStorageSync = key => {
   return wx.getStorageSync(key)
 }
 
@@ -50,17 +53,16 @@ export const updateMobxNow = (_this) => {
 }
 
 // 封装是否登陆检测
-export const isLogin=()=>{
-  let data=""
+export const isLogin = () => {
+  let data = ""
   wx.getStorage({
     key: CACHE_KEY.userInfo,
-    success (res) {
-      data=res.data
+    success(res) {
+      data = res.data
     },
-    fail:(res)=>{
-      data=false
+    fail: (res) => {
+      data = false
     }
   })
   return data
 }
-

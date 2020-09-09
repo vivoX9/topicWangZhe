@@ -71,9 +71,14 @@
   align-items: center;
 }
 
+.common-line:first-child .common-line-left image {
+  width: 60rpx;
+  height: 64rpx;
+}
+
 .common-line-left image {
   width: 60rpx;
-  height: 60rpx;
+  height: 40rpx;
 }
 
 .common-line-left text {

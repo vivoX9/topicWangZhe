@@ -1,18 +1,18 @@
 <!--pages/mine/mine.wxml-->
 <view class="mine">
-	<view class="user-msg" wx:if="{{userInfo===''}}">
+	<view class="user-msg" wx:if="{{!hasLogin}}">
 		<image src="/assets/images/common/null-user-headicon.png"></image>
 		<text>点击授权</text>
 		<button open-type="getUserInfo" bindgetuserinfo="getUserInfo" class="get-user-info"></button>
 	</view>
-	<view wx:else class="user-login-msg">
-		<image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-		<text class="userinfo-nickname">{{userInfo.nickName}}</text>
+	<view wx:else class="user-login-msg" wx:else>
+		<image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatar}}" mode="cover"></image>
+		<text class="userinfo-nickname">{{userInfo.nick_name}}</text>
 	</view>
 	<view class="list">
 		<view class="common-line" bindtap="{{userInfo===''?'':'toMyArticle'}}">
 			<view class="common-line-left">
-				<image src="/assets/images/mine/mine-article.png"></image>
+				<image src="/assets/images/mine/pic-6.png"></image>
 				<text>我的发帖</text>
 			</view>
 			<view class="common-line-right">
@@ -23,7 +23,7 @@
 		</view>
 		<view class="common-line" bindtap="{{userInfo===''?'':'toMyVisit'}}">
 			<view class="common-line-left">
-				<image src="/assets/images/mine/mine-article.png"></image>
+				<image src="/assets/images/mine/pic-5.png"></image>
 				<text>我的浏览</text>
 			</view>
 			<view class="common-line-right">

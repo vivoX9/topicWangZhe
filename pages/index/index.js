@@ -1,18 +1,11 @@
 //获取应用实例
 const app = getApp()
 
-import {
-  createMobx,
-  destroyMobx,
-  getStorageSync
-} from '../../utils/util'
-import {
-  CACHE_KEY
-} from "../../lib/config"
-import {
-  navibarList,
-  bannerList
-} from "../../mock/mock"
+import { createMobx, destroyMobx, getStorageSync } from '../../utils/util'
+import { CACHE_KEY } from '../../lib/config'
+import { wxPay } from '../../api/common'
+import { getArticleList } from '../../api/index'
+import { navibarList, bannerList } from '../../mock/mock'
 Page({
   data: {
     indicatorDots: true, //显示面板指示点
@@ -21,25 +14,46 @@ Page({
     duration: 500, //动画持续时间
     circular: true, //是否衔接滑动
     bannerList: [],
-    navibarList: []
+    navibarList: [],
+    articileList: null,
+    pageSize: {
+      offset: 0,
+      limit: 10,
+    },
   },
+
+  // 获取文章列表
+  getArticleListData() {
+    getArticleList(this.data.pageSize).then((res) => {
+      let { list } = res
+      this.setData({
+        articileList: list
+      })
+    })
+  },
+
   // 上传图片
-  uploadImg(){
+  uploadImg() {
     wx.navigateTo({
       url: '/index/upload/upload',
     })
   },
   // 支付
   pay() {
+    let openid = getStorageSync(CACHE_KEY.userInfo).open_id
+    wxPay({ openid: openid }).then((res) => {
+      console.log(res)
+    })
+    return
     wx.request({
       url: 'https://www.wzrylt.com/api/wx/prepary', //仅为示例，并非真实的接口地址
       data: {
         // "openid": getStorageSync(CACHE_KEY.userInfo).open_id
-        "openid": getStorageSync(CACHE_KEY.userInfo).open_id
+        openid: getStorageSync(CACHE_KEY.userInfo).open_id,
       },
-      method: "POST",
+      method: 'POST',
       header: {
-        "Content-Type": "application/x-www-form-urlencoded"
+        'Content-Type': 'application/x-www-form-urlencoded',
         // 'token': getStorageSync(CACHE_KEY.userInfo) ? getStorageSync(CACHE_KEY.userInfo).token : ''
       },
       success(res) {
@@ -58,10 +72,10 @@ Page({
             },
             fail(res) {
               console.log(res)
-            }
+            },
           })
         }
-      }
+      },
     })
   },
 
@@ -73,12 +87,13 @@ Page({
   initData() {
     this.setData({
       navibarList: navibarList,
-      bannerList: bannerList
+      bannerList: bannerList,
     })
   },
   onLoad: function () {
     this.initData()
-    this.storeBindings = createMobx(this, ["numA"], ['updateLikeCount'])
+    this.getArticleListData()
+    this.storeBindings = createMobx(this, ['numA'], ['updateLikeCount'])
   },
   onShow: function () {
     // wx.navigateTo({
@@ -87,5 +102,5 @@ Page({
   },
   onUnload: function () {
     destroyMobx(this)
-  }
+  },
 })

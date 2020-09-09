@@ -1,38 +1,59 @@
 export class requestData {
   constructor() {
-    this.header = {}
+    this.header = {
+      'content-type': 'application/x-www-form-urlencoded'
+    }
+    this.URL = 'https://www.wzrylt.com'
+    // this.URL = 'http://172.17.9.156:3030'
   }
+
   // get方法
-  get(URL,DATA, HEADER = this.header) {
-    return this.requestFun(URL,"GET", DATA, HEADER)
+  get(REQUEST_HEADER, DATA, HEADER = this.header) {
+    return new Promise(resolve => {
+      this.requestFun(this.URL + REQUEST_HEADER, 'GET', DATA, HEADER).then(res => {
+        resolve(res)
+      })
+    })
   }
   // post方法
-  post(URL,DATA, HEADER = this.header) {
-    this.requestFun(URL,"POST", DATA, HEADER)
+  post(REQUEST_HEADER, DATA, HEADER = this.header) {
+    return new Promise(resolve => {
+      this.requestFun(this.URL + REQUEST_HEADER, 'POST', DATA, HEADER).then(res => {
+        resolve(res)
+      })
+    })
   }
   // put方法
-  put(URL,DATA, HEADER = this.header) {
-    this.requestFun(URL,"PUT", DATA, HEADER)
+  put(REQUEST_HEADER, DATA, HEADER = this.header) {
+    return new Promise(resolve => {
+      this.requestFun(this.URL + REQUEST_HEADER, 'PUT', DATA, HEADER).then(res => {
+        resolve(res)
+      })
+    })
   }
   // delete方法
-  delete(URL,DATA, HEADER = this.header) {
-    this.requestFun(URL,"DELETE", DATA, HEADER)
+  delete(REQUEST_HEADER, DATA, HEADER = this.header) {
+    return new Promise(resolve => {
+      this.requestFun(this.URL + REQUEST_HEADER, 'DELETE', DATA, HEADER).then(res => {
+        resolve(res)
+      })
+    })
   }
   // 请求封装
-  requestFun(URL,METHOD, DATA, HEADER = this.header) {
+  requestFun(URL, METHOD, DATA, HEADER = this.header) {
     return new Promise((resolve, reject) => {
       wx.request({
         url: URL,
         data: DATA,
         header: HEADER,
         method: METHOD,
-        success: (result) => {
-          let res=result.data
+        success: (res) => {
+          res = res.data
           if (res.code === 200 || res.status === 200) {
             resolve(res)
           } else {
-            this.errFun(res.message)
-            reject(res)
+            this.errFun(res.data)
+            resolve(res)
           }
         },
         fail: (err) => {
@@ -45,8 +66,9 @@ export class requestData {
   // 异常处理
   errFun(err) {
     wx.showToast({
-      title: res,
-      duration: 2000
+      title: err,
+      duration: 2000,
+      icon: 'none'
     })
   }
 }
