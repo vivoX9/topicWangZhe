@@ -8,7 +8,7 @@ import {
 } from "./lib/config"
 App({
   onLaunch: function () {
-    let userInfo = JSON.parse(getStorageSync(CACHE_KEY.userInfo))
+    let userInfo = getStorageSync(CACHE_KEY.userInfo) ? JSON.parse(getStorageSync(CACHE_KEY.userInfo)) : ""
     if (userInfo) {
       // 已登陆
     } else {
