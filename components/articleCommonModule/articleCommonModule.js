@@ -1,18 +1,13 @@
-import {
-  createMobx,
-  destroyMobx
-} from "../../utils/util"
-import {
-  CACHE_KEY
-} from "../../lib/config"
+import { createMobx, destroyMobx,dateFormat } from '../../utils/util'
+import { CACHE_KEY } from '../../lib/config'
 Component({
   /**
    * 组件的属性列表
    */
   properties: {
     articleListData: {
-      type: Array
-    }
+      type: Array,
+    },
   },
 
   /**
@@ -21,7 +16,14 @@ Component({
   data: {
     showAllContent: false,
     hasLike: true,
-    userInfo: null
+    iconSrc: {
+      like: 'https://wzrylt.oss-cn-beijing.aliyuncs.com/miniWeb/like.png',
+      liked:
+        'https://wzrylt.oss-cn-beijing.aliyuncs.com/miniWeb/like-active.png',
+      comment: 'https://wzrylt.oss-cn-beijing.aliyuncs.com/miniWeb/comment.png',
+      share: 'https://wzrylt.oss-cn-beijing.aliyuncs.com/miniWeb/share.png',
+    },
+    userInfo: null,
   },
 
   /**
@@ -29,14 +31,12 @@ Component({
    */
   methods: {
     // 分享
-    share() {
-
-    },
+    share() {},
     // 跳转详情页
     toDetail(e) {
       this.updateCurrentArticle(e.currentTarget.dataset.item).then(() => {
         wx.navigateTo({
-          url: '/index/articleDetail/articleDetail'
+          url: '/index/articleDetail/articleDetail',
         })
       })
     },
@@ -48,21 +48,21 @@ Component({
     // 显示全部内容
     showAllContent() {
       this.setData({
-        showAllContent: !this.data.showAllContent
+        showAllContent: !this.data.showAllContent,
       })
     },
     // 获取用户信息
     getUserInfo(e) {
-      let _this=this
+      let _this = this
       if (e.detail.errMsg === 'getUserInfo:ok') {
         wx.setStorage({
           data: e.detail.userInfo,
           key: CACHE_KEY.userInfo,
-          success:(res)=>{
+          success: (res) => {
             _this.setData({
-              userInfo: e.detail.userInfo
+              userInfo: e.detail.userInfo,
             })
-          }
+          },
         })
       }
     },
@@ -73,7 +73,7 @@ Component({
         key: CACHE_KEY.userInfo,
         success(res) {
           _this.setData({
-            userInfo: res.data
+            userInfo: res.data,
           })
         },
       })
@@ -87,10 +87,8 @@ Component({
     this.getLocalUserInfo()
   },
   // 在组件实例进入页面节点树时执行
-  ready: function () {
-
-  },
+  ready: function () {},
   detached() {
     destroyMobx(this)
-  }
+  },
 })

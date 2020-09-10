@@ -4,7 +4,7 @@ export class requestData {
       'content-type': 'application/x-www-form-urlencoded'
     }
     this.URL = 'https://www.wzrylt.com'
-    // this.URL = 'http://172.17.9.156:3030'
+    // this.URL = 'http://172.17.7.45:3030'
   }
 
   // get方法

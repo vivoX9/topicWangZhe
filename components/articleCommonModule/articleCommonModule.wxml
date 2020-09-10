@@ -7,7 +7,7 @@
 					<image src="{{item.user.avatar}}"></image>
 					<text>{{item.user.nick_name}}</text>
 				</view>
-				<view class="top-right">发布于{{item.create_time}}</view>
+				<view class="top-right">{{item.create_time}}</view>
 			</view>
 			<view class="content-module">
 				<!-- <view class="content" bindtap="toDetail" data-item="{{item}}">{{showAllContent?item.content:item.handle_content}}</view> -->
@@ -19,16 +19,16 @@
 			</view>
 			<view class="msg-module">
 				<view class="like-module msg-common-module" bindtap="{{userInfo===null?'':'like'}}" data-item="{{item}}">
-					<image src="{{item.has_like&&hasLike&&userInfo!==null?'https://www.wzrylt.com/miniWeb/like-active.png':'https://www.wzrylt.com/miniWeb/like.png'}}"></image>
-					<text>{{item.has_like&&hasLike?'已点赞':'点赞'}}（{{item.like_count}}）</text>
+					<image src="{{item.has_like==0?iconSrc.like:iconSrc.liked}}"></image>
+					<text>{{item.has_like===1?'已点赞':'点赞'}}（{{item.like_count}}）</text>
 					<button bindgetuserinfo="getUserInfo" open-type="getUserInfo" wx:if="{{userInfo===null}}"></button>
 				</view>
 				<view class="comment-module msg-common-module" bindtap="toDetail" data-item="{{item}}">
-					<image src="https://www.wzrylt.com/miniWeb/comment.png"></image>
+					<image src="{{iconSrc.comment}}"></image>
 					<text>评论（{{item.comment_count}}）</text>
 				</view>
 				<view class="share-module msg-common-module" bindtap="share">
-					<image src="https://www.wzrylt.com/miniWeb/share.png"></image>
+					<image src="{{iconSrc.share}}"></image>
 					<text>分享（{{item.share_count}}）</text>
 					<button open-type="share"></button>
 				</view>

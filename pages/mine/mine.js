@@ -1,22 +1,14 @@
 // pages/mine/mine.js
-import {
-  CACHE_KEY
-} from "../../lib/config"
-import {
-  getUserInfo
-} from "../../api/common"
-import {
-  setStorageSync,
-  getStorageSync
-} from "../../utils/util"
+import { CACHE_KEY } from '../../lib/config'
+import { getUserInfo } from '../../api/common'
+import { setStorageSync, getStorageSync } from '../../utils/util'
 Page({
-
   /**
    * 页面的初始数据
    */
   data: {
     isAuth: false,
-    userInfo: "",
+    userInfo: '',
     hasLogin: false, //是否登录，false未登录
   },
 
@@ -29,12 +21,13 @@ Page({
 
   // 点击授权
   getUserInfo(e) {
-    let userInfo = e.detail.userInfo
-    this.setData({
-      userInfo: userInfo
+    wx.showLoading({
+      title: '加载中...',
+      mask: true,
     })
+    let userInfo = e.detail.userInfo
     wx.login({
-      success: res => {
+      success: (res) => {
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
         let params = {
           code: res.code,
@@ -45,30 +38,37 @@ Page({
           province: userInfo.province,
           city: userInfo.city,
         }
-        getUserInfo(params).then(res => {
+        getUserInfo(params).then((res) => {
           setStorageSync(CACHE_KEY.userInfo, JSON.stringify(res))
           setStorageSync(CACHE_KEY.openid, res.open_id)
           setStorageSync(CACHE_KEY.userid, res.id)
+          wx.hideLoading()
+          this.setData({
+            userInfo: res,
+            hasLogin: true,
+          })
         })
-      }
+      },
     })
   },
 
   // 加载页面时，获取本地用户信息
   getLocalUserInfo() {
-    let userInfo = getStorageSync(CACHE_KEY.userInfo) ? JSON.parse(getStorageSync(CACHE_KEY.userInfo)) : ''
+    let userInfo = getStorageSync(CACHE_KEY.userInfo)
+      ? JSON.parse(getStorageSync(CACHE_KEY.userInfo))
+      : ''
     if (userInfo) {
       console.log(userInfo)
       this.setData({
         userInfo: userInfo,
-        hasLogin: true
+        hasLogin: true,
       })
     }
   },
 
   // 获取个人信息
   toMyVisit() {
-    console.log("去我的浏览")
+    console.log('去我的浏览')
   },
 
   /**
@@ -81,44 +81,32 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
-
-  },
+  onReady: function () {},
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
-
-  },
+  onShow: function () {},
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
-
-  },
+  onHide: function () {},
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
-
-  },
+  onUnload: function () {},
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
-
-  },
+  onPullDownRefresh: function () {},
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
-
-  },
+  onReachBottom: function () {},
 
   /**
    * 用户点击右上角分享

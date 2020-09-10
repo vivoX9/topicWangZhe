@@ -1,7 +1,12 @@
 //获取应用实例
 const app = getApp()
 
-import { createMobx, destroyMobx, getStorageSync } from '../../utils/util'
+import {
+  createMobx,
+  destroyMobx,
+  getStorageSync,
+  apartTime,
+} from '../../utils/util'
 import { CACHE_KEY } from '../../lib/config'
 import { wxPay } from '../../api/common'
 import { getArticleList } from '../../api/index'
@@ -24,10 +29,23 @@ Page({
 
   // 获取文章列表
   getArticleListData() {
-    getArticleList(this.data.pageSize).then((res) => {
-      let { list } = res
+    let pageData = this.data.pageSize
+    let userId = getStorageSync(CACHE_KEY.userid)
+      ? getStorageSync(CACHE_KEY.userid)
+      : ''
+    if (userId !== '') {
+      pageData.userId = userId
+    }
+    getArticleList(pageData).then((res) => {
+      let list = res
+      if (list.length > 0) {
+        for (let i in list) {
+          let time = new Date(list[i].create_time).getTime()
+          list[i].create_time = apartTime(time)
+        }
+      }
       this.setData({
-        articileList: list
+        articileList: list,
       })
     })
   },
@@ -38,6 +56,7 @@ Page({
       url: '/index/upload/upload',
     })
   },
+
   // 支付
   pay() {
     let openid = getStorageSync(CACHE_KEY.userInfo).open_id
@@ -83,6 +102,7 @@ Page({
   changeTab(e) {
     console.log(e)
   },
+
   // 初始化数据
   initData() {
     this.setData({
@@ -90,16 +110,19 @@ Page({
       bannerList: bannerList,
     })
   },
+
   onLoad: function () {
     this.initData()
-    this.getArticleListData()
     this.storeBindings = createMobx(this, ['numA'], ['updateLikeCount'])
   },
+
   onShow: function () {
+    this.getArticleListData()
     // wx.navigateTo({
     //   url: '/index/articleDetail/articleDetail',
     // })
   },
+
   onUnload: function () {
     destroyMobx(this)
   },
