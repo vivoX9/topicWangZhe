@@ -33,4 +33,5 @@
 				class="get-user-info"></button>
 		</view>
 	</view>
+	<auth showAuth="{{showAuth}}" bindcompleteAuth="completeAuth"></auth>
 </view>

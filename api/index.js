@@ -28,3 +28,39 @@ export const publsihArticle = (params) => {
     })
   })
 }
+
+// 点赞文章
+export const likeArticle = (params) => {
+  return new Promise((resolve) => {
+    request.post(API_KEY.likeArticle, params).then((data) => {
+      resolve(data)
+    })
+  })
+}
+
+// 获取文章详情
+export const getArticleDetailData = (params) => {
+  return new Promise((resolve) => {
+    request.get(API_KEY.getArticleDetailData, params).then((data) => {
+      resolve(data)
+    })
+  })
+}
+
+// 获取文章评论
+export const getArticleCommentData = (params) => {
+  return new Promise((resolve) => {
+    request.get(API_KEY.getArticleCommentData, params).then((data) => {
+      resolve(data)
+    })
+  })
+}
+
+// 点赞文章评论
+export const likeComment = (params) => {
+  return new Promise((resolve) => {
+    request.post(API_KEY.likeComment, params).then((data) => {
+      resolve(data)
+    })
+  })
+}

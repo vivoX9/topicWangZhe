@@ -1,7 +1,14 @@
 // pages/mine/mine.js
-import { CACHE_KEY } from '../../lib/config'
-import { getUserInfo } from '../../api/common'
-import { setStorageSync, getStorageSync } from '../../utils/util'
+import {
+  CACHE_KEY
+} from '../../lib/config'
+import {
+  getUserInfo
+} from '../../api/common'
+import {
+  setStorageSync,
+  getStorageSync
+} from '../../utils/util'
 Page({
   /**
    * 页面的初始数据
@@ -9,6 +16,7 @@ Page({
   data: {
     isAuth: false,
     userInfo: '',
+    showAuth: false,
     hasLogin: false, //是否登录，false未登录
   },
 
@@ -20,43 +28,25 @@ Page({
   },
 
   // 点击授权
-  getUserInfo(e) {
-    wx.showLoading({
-      title: '加载中...',
-      mask: true,
+  getUserInfo() {
+    this.setData({
+      showAuth: true
     })
-    let userInfo = e.detail.userInfo
-    wx.login({
-      success: (res) => {
-        // 发送 res.code 到后台换取 openId, sessionKey, unionId
-        let params = {
-          code: res.code,
-          nick_name: userInfo.nickName,
-          avatar: userInfo.avatarUrl,
-          sex: userInfo.gender,
-          country: userInfo.country,
-          province: userInfo.province,
-          city: userInfo.city,
-        }
-        getUserInfo(params).then((res) => {
-          setStorageSync(CACHE_KEY.userInfo, JSON.stringify(res))
-          setStorageSync(CACHE_KEY.openid, res.open_id)
-          setStorageSync(CACHE_KEY.userid, res.id)
-          wx.hideLoading()
-          this.setData({
-            userInfo: res,
-            hasLogin: true,
-          })
-        })
-      },
+  },
+
+  // 授权完成
+  completeAuth() {
+    this.setData({
+      userInfo: JSON.parse(getStorageSync(CACHE_KEY.userInfo)),
+      hasLogin: true
     })
   },
 
   // 加载页面时，获取本地用户信息
   getLocalUserInfo() {
-    let userInfo = getStorageSync(CACHE_KEY.userInfo)
-      ? JSON.parse(getStorageSync(CACHE_KEY.userInfo))
-      : ''
+    let userInfo = getStorageSync(CACHE_KEY.userInfo) ?
+      JSON.parse(getStorageSync(CACHE_KEY.userInfo)) :
+      ''
     if (userInfo) {
       console.log(userInfo)
       this.setData({
@@ -75,7 +65,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.getLocalUserInfo()
+
   },
 
   /**
@@ -86,7 +76,9 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {},
+  onShow: function () {
+    this.getLocalUserInfo()
+  },
 
   /**
    * 生命周期函数--监听页面隐藏

@@ -1,8 +1,9 @@
 {
-  "navigationBarTitleText":"首页",
+  "navigationBarTitleText": "首页",
   "usingComponents": {
-    "articleCommonModule":"/components/articleCommonModule/articleCommonModule",
+    "articleCommonModule": "/components/articleCommonModule/articleCommonModule",
     "van-tab": "/miniprogram_npm/@vant/weapp/tab/index",
-    "van-tabs": "/miniprogram_npm/@vant/weapp/tabs/index"
+    "van-tabs": "/miniprogram_npm/@vant/weapp/tabs/index",
+    "auth": "/components/auth/auth"
   }
 }

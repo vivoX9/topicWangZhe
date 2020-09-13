@@ -1,4 +1,8 @@
 /**index.wxss**/
+.index {
+  padding-bottom: 140rpx;
+}
+
 .navibar {
   width: 100vw;
 }
@@ -32,17 +36,19 @@
   right: 0;
   width: 160rpx;
   height: 140rpx;
-  background: rgba(78, 56, 56, 0.2);
+  background: #fff;
   border-radius: 20rpx;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   color: #888;
+  z-index: 20;
 }
-.upload image{
+
+.upload image {
   width: 80rpx;
   height: 80rpx;
   vertical-align: bottom;
-  z-index: 100;  
+  z-index: 100;
 }

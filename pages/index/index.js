@@ -7,10 +7,19 @@ import {
   getStorageSync,
   apartTime,
 } from '../../utils/util'
-import { CACHE_KEY } from '../../lib/config'
-import { wxPay } from '../../api/common'
-import { getArticleList } from '../../api/index'
-import { navibarList, bannerList } from '../../mock/mock'
+import {
+  CACHE_KEY
+} from '../../lib/config'
+import {
+  wxPay
+} from '../../api/common'
+import {
+  getArticleList
+} from '../../api/index'
+import {
+  navibarList,
+  bannerList
+} from '../../mock/mock'
 Page({
   data: {
     indicatorDots: true, //显示面板指示点
@@ -18,6 +27,7 @@ Page({
     interval: 5000, //自动切换时间间隔
     duration: 500, //动画持续时间
     circular: true, //是否衔接滑动
+    showAuth: false,
     bannerList: [],
     navibarList: [],
     articileList: null,
@@ -30,9 +40,9 @@ Page({
   // 获取文章列表
   getArticleListData() {
     let pageData = this.data.pageSize
-    let userId = getStorageSync(CACHE_KEY.userid)
-      ? getStorageSync(CACHE_KEY.userid)
-      : ''
+    let userId = getStorageSync(CACHE_KEY.userid) ?
+      getStorageSync(CACHE_KEY.userid) :
+      ''
     if (userId !== '') {
       pageData.userId = userId
     }
@@ -60,7 +70,9 @@ Page({
   // 支付
   pay() {
     let openid = getStorageSync(CACHE_KEY.userInfo).open_id
-    wxPay({ openid: openid }).then((res) => {
+    wxPay({
+      openid: openid
+    }).then((res) => {
       console.log(res)
     })
     return

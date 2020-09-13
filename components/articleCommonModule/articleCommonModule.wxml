@@ -18,10 +18,9 @@
 				</view>
 			</view>
 			<view class="msg-module">
-				<view class="like-module msg-common-module" bindtap="{{userInfo===null?'':'like'}}" data-item="{{item}}">
+				<view class="like-module msg-common-module" bindtap="like" data-item="{{item}}">
 					<image src="{{item.has_like==0?iconSrc.like:iconSrc.liked}}"></image>
 					<text>{{item.has_like===1?'已点赞':'点赞'}}（{{item.like_count}}）</text>
-					<button bindgetuserinfo="getUserInfo" open-type="getUserInfo" wx:if="{{userInfo===null}}"></button>
 				</view>
 				<view class="comment-module msg-common-module" bindtap="toDetail" data-item="{{item}}">
 					<image src="{{iconSrc.comment}}"></image>
@@ -35,4 +34,5 @@
 			</view>
 		</view>
 	</block>
+	<auth showAuth="{{showAuth}}" bindcompleteAuth="completeAuth"></auth>
 </view>

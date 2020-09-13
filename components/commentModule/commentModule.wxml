@@ -1,34 +1,37 @@
-<!--components/commentModule/commentModule.wxml-->
+<!-- components/commentModule/commentModule.wxml -->
 <view class="comment-main">
-	<view class="comment-title">
-		<text>{{articleDataCurrent.comment_total_count}}条评论</text>
-		<text>写评论</text>
-	</view>
+  <view class="comment-title">
+    <text>{{commentData.count}}条评论</text>
+    <text bindtap="comment">写评论</text>
+  </view>
   <view class="comment-list">
-    <view class="comment-item" wx:for="{{articleDataCurrent.comments}}" wx:key="index">
+    <view class="comment-item" wx:for="{{commentData.list}}" wx:key="index">
       <view class="comment-item-left">
-        <image src="{{item.user_info.avatar}}"></image>
+        <image src="{{item.user.avatar}}"></image>
       </view>
       <view class="comment-item-right">
         <view class="comment-item-top">
-          <view class="comment-item-top-left">
-            {{item.user_info.name}}
-          </view>
+          <view class="comment-item-top-left">{{item.user.nick_name}}</view>
           <view class="comment-item-top-right">
             <view class="comment-like" bindtap="like" data-item="{{item}}">
-              <image src="{{item.has_like?commentLike:commentUnlike}}"></image>
-              <text>{{item.comment_like_count}}</text>
+              <image src="{{item.has_like===1?commentLike:commentUnlike}}"></image>
+              <text>{{item.like_count}}</text>
             </view>
           </view>
         </view>
-        <view class="comment-item-middle">
-          {{item.comment_content}}
-        </view>
+        <view class="comment-item-middle">{{item.content}}</view>
         <view class="comment-item-bottom">
-          <text decode="true">{{item.comment_floor}}楼&nbsp;·&nbsp;</text>
-          <text decode="true">{{item.comment_time}}</text>
+          <text decode="true">{{item.id}}楼&nbsp;·&nbsp;</text>
+          <text decode="true">{{item.create_time}}</text>
         </view>
       </view>
+    </view>
+  </view>
+  <!-- 评论输入框 -->
+  <view class="comment-box" hover-class="none" hover-stop-propagation="false" wx:if="{{showCommentBox}}">
+    <view class="comment-box-fixed" hover-class="none" hover-stop-propagation="false">
+      <input type="text" bindinput="getComment" placeholder="输入您想说的" auto-focus="{{false}}" placeholder-class="comment-box-input" bindblur="cancelComment"/>
+      <view class="{{commentContent===''?'comment-button':'comment-button comment-button-active'}}" hover-class="none" hover-stop-propagation="false">发表</view>
     </view>
   </view>
 </view>
