@@ -1,6 +1,12 @@
-import { createStoreBindings } from 'mobx-miniprogram-bindings'
-import { store } from '../store/store'
-import { CACHE_KEY } from '../lib/config'
+import {
+  createStoreBindings
+} from 'mobx-miniprogram-bindings'
+import {
+  store
+} from '../store/store'
+import {
+  CACHE_KEY
+} from '../lib/config'
 // 初始化时间
 export const formatTime = (date) => {
   const year = date.getFullYear()
@@ -11,8 +17,7 @@ export const formatTime = (date) => {
   const second = date.getSeconds()
   return (
     [year, month, day].map(formatNumber).join('/') +
-    ' ' +
-    [hour, minute, second].map(formatNumber).join(':')
+    ' ' + [hour, minute, second].map(formatNumber).join(':')
   )
 }
 
@@ -78,17 +83,9 @@ export const updateMobxNow = (_this) => {
 
 // 封装是否登陆检测
 export const isLogin = () => {
-  let data = ''
-  wx.getStorage({
-    key: CACHE_KEY.userInfo,
-    success(res) {
-      data = res.data
-    },
-    fail: (res) => {
-      data = false
-    },
-  })
-  return data
+  let userInfo = getStorageSync(CACHE_KEY.userInfo) ? getStorageSync(CACHE_KEY.userInfo) : ''
+  let isLogin = userInfo === '' ? false : true
+  return isLogin
 }
 
 // 处理某个特定时间戳距今天多少分钟/小时

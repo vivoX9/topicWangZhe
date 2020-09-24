@@ -1,0 +1,26 @@
+<!--components/collectModule/collectModule.wxml-->
+<view class="collect-module">
+  <view class="collect-item" wx:for="{{list}}" wx:key="index">
+    <view class="item-top">
+      {{item.title}}
+    </view>
+    <view class="item-content">
+      {{item.content}}
+    </view>
+    <view class="item-middle" wx:if="{{item.pic.length>0}}">
+      <image src="{{item}}" wx:for="{{item.pic}}" wx:key="index"></image>
+    </view>
+    <view class="item-bottom">
+      <view class="comment">
+        <image src="https://wzrylt.oss-cn-beijing.aliyuncs.com/miniWeb/comment.png"></image>
+        <text>{{item.comment_count}}</text>
+      </view>
+      <view class="like">
+        <image src="https://wzrylt.oss-cn-beijing.aliyuncs.com/miniWeb/like.png"></image>
+        <text> {{item.like_count}}</text>
+      </view>
+      <!-- 后期迭代收藏功能 -->
+    </view>
+  </view>
+
+</view>

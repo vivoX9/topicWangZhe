@@ -8,6 +8,10 @@ import {
   apartTime,
 } from '../../utils/util'
 import {
+  navibarList,
+  bannerList
+} from '../../mock/mock'
+import {
   CACHE_KEY
 } from '../../lib/config'
 import {
@@ -16,10 +20,6 @@ import {
 import {
   getArticleList
 } from '../../api/index'
-import {
-  navibarList,
-  bannerList
-} from '../../mock/mock'
 Page({
   data: {
     indicatorDots: true, //显示面板指示点
@@ -130,9 +130,6 @@ Page({
 
   onShow: function () {
     this.getArticleListData()
-    // wx.navigateTo({
-    //   url: '/index/articleDetail/articleDetail',
-    // })
   },
 
   onUnload: function () {

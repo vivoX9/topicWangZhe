@@ -1,7 +1,6 @@
 // components/commentModule/commentModule.js
 import {
   createMobx,
-  isLogin,
   getStorageSync
 } from '../../utils/util'
 import {
@@ -34,6 +33,7 @@ Component({
     commentContent: '',
     showCommentBox: false,
     commentData: null,
+    showAuth: false
   },
   created() {},
   /**
@@ -67,6 +67,15 @@ Component({
 
     // 发表评论
     comment() {
+      let userId = getStorageSync(CACHE_KEY.userid) ?
+        getStorageSync(CACHE_KEY.userid) :
+        ''
+      if (userId === '') {
+        this.setData({
+          showAuth: true
+        })
+        return
+      }
       this.setData({
         showCommentBox: true,
       })

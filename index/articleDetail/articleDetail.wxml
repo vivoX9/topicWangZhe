@@ -1,34 +1,35 @@
 <!-- index/articleDetail.wxml -->
 <view class="detail">
-		<view class="title">
-				<view class="main-title">{{articleDetailData.title}}</view>
-				<view class="sub-title">
-						<view class="headicon">
-								<image src="{{articleDetailData.user.avatar}}"></image>
-								<text>{{articleDetailData.user.nick_name}}</text>
-						</view>
-						<view class="user-msg">
-								<text class="user-time" decode="true">{{articleDetailData.create_time}}</text>
-								<text class="text-num" decode="true">&nbsp;阅读:{{articleDetailData.visit_count}}</text>
-						</view>
-				</view>
+	<view class="title">
+		<view class="main-title">{{articleDetailData.title}}</view>
+		<view class="sub-title">
+			<view class="headicon">
+				<image src="{{articleDetailData.user.avatar}}"></image>
+				<text>{{articleDetailData.user.nick_name}}</text>
+			</view>
+			<view class="user-msg">
+				<text class="user-time" decode="true">{{articleDetailData.create_time}}</text>
+				<text class="text-num" decode="true">&nbsp;阅读:{{articleDetailData.visit_count}}</text>
+			</view>
 		</view>
-		<view class="main">
-				<view class="main-text">{{articleDetailData.content}}</view>
-				<view class="bottom-line">
-						<view class="like-module" bindtap="like" data-item="{{articleDetailData}}">
-								<image src="{{loveSrc}}" wx:if="{{articleDetailData.has_like===1}}"></image>
-								<image src="{{unloveSrc}}" wx:else></image>
-								<text>{{articleDetailData.like_count}}</text>
-						</view>
-						<view class="explain-module">
-								<text>©著作权归作者所有</text>
-						</view>
-				</view>
+	</view>
+	<view class="main">
+		<view class="main-text">{{articleDetailData.content}}</view>
+		<view class="bottom-line">
+			<view class="like-module" bindtap="like" data-item="{{articleDetailData}}">
+				<image src="{{loveSrc}}" wx:if="{{articleDetailData.has_like===1}}"></image>
+				<image src="{{unloveSrc}}" wx:else></image>
+				<text>{{articleDetailData.like_count}}</text>
+			</view>
+			<view class="explain-module">
+				<text>©著作权归作者所有</text>
+			</view>
 		</view>
-		<view class="comment-module">
-				<view class="comment-component">
-						<commentModule articleId="{{articleDetailData.id}}"></commentModule>
-				</view>
+	</view>
+	<view class="comment-module">
+		<view class="comment-component">
+			<commentModule articleId="{{articleDetailData.id}}"></commentModule>
 		</view>
+	</view>
+	<auth showAuth="{{showAuth}}" bindcompleteAuth="completeAuth"></auth>
 </view>

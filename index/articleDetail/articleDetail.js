@@ -1,6 +1,17 @@
-import { createMobx, destroyMobx, getStorageSync } from '../../utils/util'
-import { getArticleDetailData, likeArticle } from '../../api/index'
-import { CACHE_KEY } from '../../lib/config'
+import {
+  createMobx,
+  destroyMobx,
+  getStorageSync,
+  isLogin
+} from '../../utils/util'
+import {
+  getArticleDetailData,
+  likeArticle,
+  recordVisit
+} from '../../api/index'
+import {
+  CACHE_KEY
+} from '../../lib/config'
 Page({
   /**
    * 页面的初始数据
@@ -12,16 +23,26 @@ Page({
       limit: 10,
       offset: 0,
     },
+    article_id: '',
     articleDetailData: null,
     commentData: null,
+    showAuth: false
+  },
+
+  // 授权完成
+  completeAuth() {
+    this.articleDetail(this.data.articleDetailData.id)
   },
 
   // 点赞
   like(e) {
-    let userId = getStorageSync(CACHE_KEY.userid)
-      ? getStorageSync(CACHE_KEY.userid)
-      : ''
+    let userId = getStorageSync(CACHE_KEY.userid) ?
+      getStorageSync(CACHE_KEY.userid) :
+      ''
     if (userId === '') {
+      this.setData({
+        showAuth: true
+      })
       return
     }
     let item = e.currentTarget.dataset.item
@@ -46,9 +67,9 @@ Page({
 
   // 获取文章详情/评论
   articleDetail(id) {
-    let userId = getStorageSync(CACHE_KEY.userid)
-      ? getStorageSync(CACHE_KEY.userid)
-      : ''
+    let userId = getStorageSync(CACHE_KEY.userid) ?
+      getStorageSync(CACHE_KEY.userid) :
+      ''
     let params = {
       article_id: id,
     }
@@ -71,11 +92,28 @@ Page({
     })
   },
 
+  // 记录文章浏览记录
+  recordVisitData() {
+    let islogin = isLogin()
+    if (islogin) {
+      let params = {
+        user_id: getStorageSync(CACHE_KEY.userid),
+        article_id: this.data.article_id
+      }
+      recordVisit(params)
+    }
+
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.setData({
+      article_id: options.article_id
+    })
     this.articleDetail(options.article_id)
+    this.recordVisitData()
   },
 
   /**
@@ -97,7 +135,7 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-    destroyMobx(this)
+    // destroyMobx(this)
   },
 
   /**

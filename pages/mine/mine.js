@@ -7,6 +7,7 @@ import {
 } from '../../api/common'
 import {
   setStorageSync,
+  isLogin,
   getStorageSync
 } from '../../utils/util'
 Page({
@@ -22,6 +23,13 @@ Page({
 
   // 去往我的发帖
   toMyArticle(e) {
+    let islogin = isLogin()
+    if (!islogin) {
+      this.setData({
+        showAuth: true
+      })
+      return
+    }
     wx.navigateTo({
       url: '/mine/myArticle/myArticle',
     })
@@ -56,9 +64,18 @@ Page({
     }
   },
 
-  // 获取个人信息
+  // 去往我的浏览记录
   toMyVisit() {
-    console.log('去我的浏览')
+    let islogin = isLogin()
+    if (!islogin) {
+      this.setData({
+        showAuth: true
+      })
+      return
+    }
+    wx.navigateTo({
+      url: '/mine/visit/visit',
+    })
   },
 
   /**

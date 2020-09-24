@@ -1,0 +1,73 @@
+/* components/collectModule/collectModule.wxss */
+
+.collect-module {
+  min-height: 100vh;
+  background: #f4f4f4;
+}
+
+.collect-item {
+  background: #fff;
+  border-radius: 8rpx;
+  margin-bottom: 20rpx;
+  padding: 30rpx;
+}
+
+.item-top {
+  font-size: 40rpx;
+  font-weight: 600;
+  color: #222;
+  line-height: 60rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-all;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}
+
+.item-middle {
+  padding-bottom: 30rpx;
+}
+
+.item-middle image {
+  width: 200rpx;
+  height: 200rpx;
+  vertical-align: bottom;
+  border-radius: 8rpx;
+  margin-right: 20rpx;
+}
+
+.item-bottom {
+  display: flex;
+  align-items: center;
+}
+
+.item-content {
+  padding: 30rpx 0;
+  font-size: 32rpx;
+  color: #222;
+  line-height: 48rpx;
+}
+
+.comment,
+.like {
+  display: flex;
+  align-items: center;
+  font-size: 32rpx;
+  color: #222;
+  width: 20%;
+}
+
+.comment image {
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 20rpx;
+  vertical-align: bottom;
+}
+
+
+.like image {
+  width: 40rpx;
+  height: 40rpx;
+  vertical-align: bottom;
+  margin-right: 20rpx;
+}

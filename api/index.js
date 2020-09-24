@@ -1,11 +1,17 @@
-import { requestData } from '../utils/request.js'
-import { API_KEY } from '../lib/config'
+import {
+  requestData
+} from '../utils/request.js'
+import {
+  API_KEY
+} from '../lib/config'
 const request = new requestData()
 
 // 上传图片
 export const uploadImg = (params) => {
   return new Promise((resolve) => {
-    request.get(API_KEY.uploadImg, params).then(({ data }) => {
+    request.get(API_KEY.uploadImg, params).then(({
+      data
+    }) => {
       resolve(data)
     })
   })
@@ -14,7 +20,9 @@ export const uploadImg = (params) => {
 // 获取文章列表（包含分页）
 export const getArticleList = (params) => {
   return new Promise((resolve) => {
-    request.get(API_KEY.getArticleList, params).then(({ data }) => {
+    request.get(API_KEY.getArticleList, params).then(({
+      data
+    }) => {
       resolve(data)
     })
   })
@@ -60,6 +68,15 @@ export const getArticleCommentData = (params) => {
 export const likeComment = (params) => {
   return new Promise((resolve) => {
     request.post(API_KEY.likeComment, params).then((data) => {
+      resolve(data)
+    })
+  })
+}
+
+// 记录文章浏览记录
+export const recordVisit = (params) => {
+  return new Promise((resolve) => {
+    request.get(API_KEY.recordVisit, params).then((data) => {
       resolve(data)
     })
   })

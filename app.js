@@ -8,12 +8,12 @@ import {
 } from "./lib/config"
 App({
   onLaunch: function () {
-    let userInfo = getStorageSync(CACHE_KEY.userInfo) ? JSON.parse(getStorageSync(CACHE_KEY.userInfo)) : ""
-    if (userInfo) {
-      // 已登陆
-    } else {
-      // 未登录
-    }
+    // let userInfo = getStorageSync(CACHE_KEY.userInfo) ? JSON.parse(getStorageSync(CACHE_KEY.userInfo)) : ""
+    // if (userInfo) {
+    //   // 已登陆
+    // } else {
+    //   // 未登录
+    // }
   },
   globalData: {
     userInfo: null
