@@ -1,0 +1,4 @@
+<!--mine/visit/visit.wxml-->
+<view class="visit">
+  <collectModule></collectModule>
+</view>

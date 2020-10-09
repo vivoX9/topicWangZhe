@@ -30,8 +30,8 @@
 
 .content {
   padding-top: 20rpx;
-  font-size: 14px;
-  line-height: 20px;
+  font-size: 32rpx;
+  line-height: 48rpx;
 }
 
 .msg-module {
@@ -48,8 +48,18 @@
   align-items: center;
   width: calc(100% / 3);
   justify-content: center;
+  position: relative;
 }
-
+.msg-module>view button{
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 20;
+  opacity: 0;
+  
+}
 .share-module {
   position: relative;
 }

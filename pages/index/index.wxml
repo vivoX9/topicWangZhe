@@ -1,10 +1,12 @@
-<!--index.wxml-->
+<!-- index.wxml -->
 <view class="index">
-	<view class="navibar">
+	<view class="navibar" wx:if="{{articileList!==null}}">
 		<van-tabs swipeable bindchange="changeTab">
 			<van-tab title="{{item.title}}" wx:for="{{navibarList}}" wx:key="index" class="navibat-item">
 				<view class="banner">
-					<swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="{{circular}}" style="height:200px;">
+					<swiper indicator-color='#CDCDCD' indicator-active-color='#CC0000' indicator-dots="{{indicatorDots}}"
+						autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="{{circular}}"
+						style="height:200px;">
 						<block wx:for="{{bannerList}}" wx:key="index">
 							<swiper-item>
 								<image src="{{item.src}}" class="banner-image"></image>
@@ -13,10 +15,17 @@
 					</swiper>
 				</view>
 				<view class="main">
+					<button bindtap="pay" wx:if="{{false}}">立即支付</button>
 					<view class="main-title" bindtap="updateLikeCount">帖子</view>
-					<articleCommonModule></articleCommonModule>
+					<articleCommonModule articleListData='{{articileList}}' bind:getArticleList="getArticleListData">
+					</articleCommonModule>
 				</view>
+
 			</van-tab>
 		</van-tabs>
+	</view>
+	<view class="upload" bindtap="uploadImg">
+		<image src="/assets/images/index/pic-4.png"></image>
+		<text>发表</text>
 	</view>
 </view>

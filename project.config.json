@@ -4,21 +4,39 @@
     "ignore": []
   },
   "setting": {
-    "urlCheck": true,
+    "urlCheck": false,
     "es6": true,
+    "enhance": false,
     "postcss": true,
     "preloadBackgroundData": false,
     "minified": true,
     "newFeature": true,
-    "autoAudits": false,
     "coverView": true,
+    "nodeModules": true,
+    "autoAudits": false,
     "showShadowRootInWxmlPanel": true,
-    "scopeDataCheck": false
+    "scopeDataCheck": false,
+    "checkInvalidKey": true,
+    "checkSiteMap": true,
+    "uploadWithSourceMap": true,
+    "useMultiFrameRuntime": false,
+    "useApiHook": true,
+    "babelSetting": {
+      "ignore": [],
+      "disablePlugins": [],
+      "outputPath": ""
+    },
+    "useIsolateContext": true,
+    "useCompilerModule": true,
+    "userConfirmedUseCompilerModuleSwitch": false,
+    "packNpmManually": false,
+    "packNpmRelationList": [],
+    "minifyWXSS": true
   },
   "compileType": "miniprogram",
   "libVersion": "2.11.0",
-  "appid": "wxd18e75b9d9323d8c",
-  "projectname": "miniprogram-1",
+  "appid": "wxee3c57d2b3cd88e9",
+  "projectname": "web",
   "debugOptions": {
     "hidedInDevtools": []
   },
@@ -26,18 +44,45 @@
   "simulatorType": "wechat",
   "simulatorPluginLibVersion": {},
   "condition": {
-    "search": {
-      "list": []
-    },
-    "conversation": {
+    "plugin": {
       "list": []
     },
     "game": {
       "currentL": -1,
       "list": []
     },
-    "miniprogram": {
+    "gamePlugin": {
       "list": []
+    },
+    "search": {
+      "list": []
+    },
+    "conversation": {
+      "list": []
+    },
+    "miniprogram": {
+      "list": [
+        {
+          "id": -1,
+          "name": "上传图片",
+          "pathName": "index/upload/upload",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "我的",
+          "pathName": "pages/mine/mine",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "浏览记录",
+          "pathName": "mine/visit/visit",
+          "scene": null
+        }
+      ]
     }
   }
 }

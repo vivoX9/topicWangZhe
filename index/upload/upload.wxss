@@ -1,0 +1,119 @@
+/* index/upload/upload.wxss */
+.upload-cotainer {
+  padding: 0 30rpx;
+}
+
+.input-holder-style{
+  color: #ccc;
+}
+/* 文章标题 */
+.title-common {
+  padding: 30rpx 0;
+}
+
+.title-top-common {
+  font-size: 40rpx;
+  color: #222;
+  line-height: 40rpx;
+  padding-bottom: 30rpx;
+  display: flex;
+  justify-content: space-between;
+}
+.error-text{
+  font-size: 28rpx;
+  color:#CC0000;
+}
+
+.title-bottom-common {
+  height: 80rpx;
+}
+
+.title-bottom-common input {
+  border: 1px solid #ddd;
+  padding: 4rpx 16rpx;
+  display: inline-block;
+  height: 80rpx;
+  width: 100%;
+  border-radius: 8rpx;
+  color: #222;
+  box-sizing: border-box;
+}
+
+
+/* 文章内容 */
+.content {
+  /* padding-bottom: 30rpx; */
+}
+
+.content-bottom {
+  height: 300rpx;
+}
+
+.content-bottom textarea {
+  display: inline-block;
+  width: 100%;
+  height: 300rpx;
+  border: 1px solid #ddd;
+  padding: 10rpx 16rpx;
+  box-sizing: border-box;
+  color: #222;
+  border-radius: 8rpx;
+}
+
+/* 上传图片 */
+.upload {
+  /* padding-top: ; */
+}
+
+/* .upload-title{
+  
+} */
+.image-box {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+
+.image-box>image {
+  width: 200rpx;
+  height: 200rpx;
+  border: 1px solid #ddd;
+  border-radius: 8rpx;
+  vertical-align: bottom;
+  margin-right: 20rpx;
+  margin-right: 30rpx;
+}
+
+.upload-box {
+  width: 200rpx;
+  height: 200rpx;
+  background: #eee;
+  justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  border: 1px solid #ddd;
+  border-radius: 8rpx;
+}
+
+.upload-box image {
+  width: 60rpx;
+  height: 60rpx;
+}
+
+.publish {
+  width: calc(100% - 60rpx);
+  height: 90rpx;
+  line-height: 90rpx;
+  text-align: center;
+  font-size: 30rpx;
+  font-weight: bold;
+  border-radius: 999rpx;
+  background: #CC0000;
+  color: #fff;
+  position: fixed;
+  bottom: 40rpx;
+  left: 50%;
+  transform: translateX(-50%);
+}

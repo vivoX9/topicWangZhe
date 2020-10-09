@@ -1,0 +1,4 @@
+index.js:首页tab及其子目录所有请求封装
+tools.js:工具tab及其子目录所有请求封装
+mine.js:我的tab及其子目录所有请求封装
+mall.js:商城tab及其子目录所有请求封装

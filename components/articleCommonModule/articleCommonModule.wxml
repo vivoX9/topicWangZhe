@@ -4,13 +4,14 @@
 		<view class="item">
 			<view class="top-module">
 				<view class="top-left">
-					<image src="{{item.user_info.avatar}}"></image>
-					<text>{{item.user_info.nickname}}</text>
+					<image src="{{item.user.avatar}}"></image>
+					<text>{{item.user.nick_name}}</text>
 				</view>
-				<view class="top-right">发布于{{item.create_time}}</view>
+				<view class="top-right">{{item.create_time}}</view>
 			</view>
 			<view class="content-module">
-				<view class="content" bindtap="toDetail" data-item="{{item}}">{{showAllContent?item.content:item.handle_content}}</view>
+				<!-- <view class="content" bindtap="toDetail" data-item="{{item}}">{{showAllContent?item.content:item.handle_content}}</view> -->
+				<view class="content" bindtap="toDetail" data-item="{{item}}">{{item.content}}</view>
 				<view wx:if="{{item.showAll}}">
 					<view class="show-check" wx:if="{{item.showAll&&!showAllContent}}" bindtap="showAllContent">展开所有内容</view>
 					<view class="show-check" wx:else bindtap="showAllContent">收起</view>
@@ -18,19 +19,20 @@
 			</view>
 			<view class="msg-module">
 				<view class="like-module msg-common-module" bindtap="like" data-item="{{item}}">
-					<image src="{{item.has_like&&hasLike?'/assets/images/index/like-active.png':'/assets/images/index/like.png'}}"></image>
-					<text>{{item.has_like&&hasLike?'已点赞':'点赞'}}（{{item.like_count}}）</text>
+					<image src="{{item.has_like==0?iconSrc.like:iconSrc.liked}}"></image>
+					<text>{{item.has_like===1?'已点赞':'点赞'}}（{{item.like_count}}）</text>
 				</view>
-				<view class="comment-module msg-common-module">
-					<image src="/assets/images/index/comment.png"></image>
-					<text>评论（{{item.comment_total_count}}）</text>
+				<view class="comment-module msg-common-module" bindtap="toDetail" data-item="{{item}}">
+					<image src="{{iconSrc.comment}}"></image>
+					<text>评论（{{item.comment_count}}）</text>
 				</view>
 				<view class="share-module msg-common-module" bindtap="share">
-					<image src="/assets/images/index/share.png"></image>
+					<image src="{{iconSrc.share}}"></image>
 					<text>分享（{{item.share_count}}）</text>
 					<button open-type="share"></button>
 				</view>
 			</view>
 		</view>
 	</block>
+	<auth showAuth="{{showAuth}}" bindcompleteAuth="completeAuth"></auth>
 </view>

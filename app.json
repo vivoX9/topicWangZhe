@@ -7,13 +7,15 @@
     {
       "root": "mine",
       "pages": [
-        "myArticle/myArticle"
+        "myArticle/myArticle",
+        "visit/visit"
       ]
     },
     {
       "root": "index",
       "pages": [
-        "articleDetail/articleDetail"
+        "articleDetail/articleDetail",
+        "upload/upload"
       ]
     }
   ],

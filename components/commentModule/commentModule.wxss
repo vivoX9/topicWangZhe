@@ -1,0 +1,136 @@
+/* components/commentModule/commentModule.wxss */
+.comment-main {
+  padding: 0 30rpx;
+}
+
+.comment-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 110rpx;
+}
+
+.comment-title text:first-child {
+  font-size: 14px;
+}
+
+.comment-title text:last-child {
+  font-size: 14px;
+  display: inline-block;
+  height: 110rpx;
+  line-height: 110rpx;
+  padding-left: 100rpx;
+}
+
+.comment-item {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 40rpx;
+  margin-bottom: 40rpx;
+  border-bottom: 0.5px solid #eee;
+}
+
+.comment-item-left image {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  vertical-align: bottom;
+}
+
+.comment-item-right {
+  display: flex;
+  flex-direction: column;
+  width: calc(100% - 100rpx);
+}
+
+.comment-item-top {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 16rpx;
+}
+
+.comment-item-top-left {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.comment-like {
+  display: flex;
+  align-items: center;
+}
+
+.comment-like image {
+  width: 30rpx;
+  height: 30rpx;
+  vertical-align: bottom;
+  margin-right: 8rpx;
+}
+
+.comment-item-middle {
+  font-size: 14px;
+  color: #333;
+  padding-bottom: 16rpx;
+  text-align: justify;
+}
+
+.comment-item-bottom {
+  font-size: 12px;
+  color: #999;
+}
+
+/* 评论输入框 */
+.comment-box {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  background: #ffffff;
+  height: 100rpx;
+  width: 100vw;
+  height: 100rpx;
+  z-index: 20;
+}
+.comment-box-fixed {
+  height: 100rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 30rpx;
+}
+
+.comment-box input {
+  height: 80rpx;
+  width: 78%;
+  box-sizing: border-box;
+  border: 1px solid #ddd;
+  border-radius: 8rpx;
+  padding-left: 16rpx;
+  color: #222;
+}
+.comment-button {
+  width: 20%;
+  background: #cdcdcd;
+  height: 80rpx;
+  text-align: center;
+  border-radius: 8rpx;
+  line-height: 80rpx;
+  color: #777;
+}
+.comment-button-active {
+  background: #cc0;
+  color: #222;
+}
+.comment-box-input {
+  font-size: 28rpx;
+  color: #999;
+}
+
+/* 遮罩层 */
+.cover-bg{
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10;
+  background: rgba(0, 0, 0, 0);
+}

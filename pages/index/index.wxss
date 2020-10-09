@@ -1,4 +1,9 @@
 /**index.wxss**/
+.index {
+  padding-bottom: 140rpx;
+  box-sizing: border-box;
+}
+
 .navibar {
   width: 100vw;
 }
@@ -24,4 +29,27 @@
   font-size: 20px;
   font-weight: bold;
   padding: 16rpx 0;
+}
+
+.upload {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  width: 160rpx;
+  height: 140rpx;
+  background: #fff;
+  border-radius: 20rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  color: #888;
+  z-index: 20;
+}
+
+.upload image {
+  width: 80rpx;
+  height: 80rpx;
+  vertical-align: bottom;
+  z-index: 100;
 }
