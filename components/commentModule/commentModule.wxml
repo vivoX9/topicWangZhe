@@ -31,10 +31,11 @@
   <view class="comment-box" hover-class="none" hover-stop-propagation="false" wx:if="{{showCommentBox}}">
     <view class="comment-box-fixed" hover-class="none" hover-stop-propagation="false">
       <input type="text" bindinput="getComment" placeholder="输入您想说的" auto-focus="{{false}}"
-        placeholder-class="comment-box-input" bindblur="cancelComment" />
+        placeholder-class="comment-box-input"/>
       <view class="{{commentContent===''?'comment-button':'comment-button comment-button-active'}}" hover-class="none"
-        hover-stop-propagation="false">发表</view>
+        hover-stop-propagation="false" bindtap="sendComment">发表</view>
     </view>
   </view>
+  <view class="cover-bg" wx:if="{{showCommentBox}}" bindtap="closeCoverBg"></view>
   <auth showAuth='{{showAuth}}'></auth>
 </view>

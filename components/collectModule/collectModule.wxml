@@ -1,6 +1,6 @@
 <!--components/collectModule/collectModule.wxml-->
 <view class="collect-module">
-  <view class="collect-item" wx:for="{{list}}" wx:key="index">
+  <view class="collect-item" wx:for="{{list}}" wx:key="index" bindtap="toDetail" data-item="{{item}}">
     <view class="item-top">
       {{item.title}}
     </view>

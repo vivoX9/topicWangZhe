@@ -81,3 +81,12 @@ export const recordVisit = (params) => {
     })
   })
 }
+
+// 发表评论
+export const publishComment = params => {
+  return new Promise(resolve => {
+    request.post(API_KEY.publishComment, params).then(res => {
+      resolve(res)
+    })
+  })
+}

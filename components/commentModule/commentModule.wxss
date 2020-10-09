@@ -87,6 +87,7 @@
   height: 100rpx;
   width: 100vw;
   height: 100rpx;
+  z-index: 20;
 }
 .comment-box-fixed {
   height: 100rpx;
@@ -121,4 +122,15 @@
 .comment-box-input {
   font-size: 28rpx;
   color: #999;
+}
+
+/* 遮罩层 */
+.cover-bg{
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10;
+  background: rgba(0, 0, 0, 0);
 }

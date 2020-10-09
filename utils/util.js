@@ -118,3 +118,10 @@ export const apartTime = (dateTimeStamp) => {
   } else result = '刚刚'
   return result
 }
+
+// 判断是否有用户信息
+export const hasUserInfo = () => {
+  let userInfo = getStorageSync(CACHE_KEY.userInfo)
+  userInfo = userInfo ? true : false
+  return userInfo
+}

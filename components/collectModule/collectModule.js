@@ -8,6 +8,9 @@ import {
   visitList,
   selfPublish
 } from "../../api/mine"
+import {
+  set
+} from "mobx-miniprogram"
 Component({
   /**
    * 组件的属性列表
@@ -30,16 +33,25 @@ Component({
     }
   },
   created() {
-    this.getList()
+    setTimeout(() => {
+      this.getList()
+    }, 20)
   },
   /**
    * 组件的方法列表
    */
   methods: {
+    // 跳往详情页
+    toDetail(e) {
+      let id = e.currentTarget.dataset.item.id
+      wx.navigateTo({
+        url: `/index/articleDetail/articleDetail?article_id=${id}`,
+      })
+    },
+
     // 获取列表
     getList() {
       let userId = getStorageSync(CACHE_KEY.userid)
-
       if (this.data.listType === 'visit') {
         // 浏览记录
         this.setData({

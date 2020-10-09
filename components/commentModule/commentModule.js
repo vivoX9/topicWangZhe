@@ -1,10 +1,12 @@
 // components/commentModule/commentModule.js
 import {
   createMobx,
-  getStorageSync
+  getStorageSync,
+  hasUserInfo
 } from '../../utils/util'
 import {
   getArticleCommentData,
+  publishComment,
   likeComment
 } from '../../api/index'
 import {
@@ -50,6 +52,13 @@ Component({
     },
   },
   methods: {
+    // 点击蒙层关闭
+    closeCoverBg() {
+      this.setData({
+        showCommentBox: false
+      })
+    },
+
     // 失焦隐藏输入框
     cancelComment() {
       this.setData({
@@ -65,7 +74,7 @@ Component({
       })
     },
 
-    // 发表评论
+    // 打开评论弹窗
     comment() {
       let userId = getStorageSync(CACHE_KEY.userid) ?
         getStorageSync(CACHE_KEY.userid) :
@@ -79,6 +88,34 @@ Component({
       this.setData({
         showCommentBox: true,
       })
+    },
+
+    // 发表评论
+    sendComment() {
+      if (hasUserInfo()) {
+        publishComment({
+          article_id: this.data.articleId,
+          user_id: getStorageSync(CACHE_KEY.userid),
+          content: this.data.commentContent
+        }).then(res => {
+          this.setData({
+            showCommentBox: false
+          })
+          wx.showToast({
+            title: '发表成功',
+            icon: "success",
+            duration: 1500
+          })
+          this.ArticleComment({
+            id: this.data.articleId,
+            refresh: true
+          })
+        })
+      } else {
+        this.setData({
+          showAuth: true
+        })
+      }
     },
 
     // 获取评论内容
@@ -114,6 +151,12 @@ Component({
 
     // 点赞评论
     like(e) {
+      if (!hasUserInfo()) {
+        this.setData({
+          showAuth: true
+        })
+        return
+      }
       let params = {
         article_id: this.data.articleId,
         user_id: getStorageSync(CACHE_KEY.userid),
