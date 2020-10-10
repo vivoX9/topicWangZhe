@@ -20,7 +20,6 @@
 					<articleCommonModule articleListData='{{articileList}}' bind:getArticleList="getArticleListData">
 					</articleCommonModule>
 				</view>
-
 			</van-tab>
 		</van-tabs>
 	</view>

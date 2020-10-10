@@ -31,6 +31,8 @@ Page({
     bannerList: [],
     navibarList: [],
     articileList: null,
+    isBottom: false,
+    articileListLength: 0,
     pageSize: {
       offset: 0,
       limit: 10,
@@ -38,7 +40,10 @@ Page({
   },
 
   // 获取文章列表
-  getArticleListData() {
+  getArticleListData(refresh = true) {
+    wx.showLoading({
+      title: '加载中...',
+    })
     let pageData = this.data.pageSize
     let userId = getStorageSync(CACHE_KEY.userid) ?
       getStorageSync(CACHE_KEY.userid) :
@@ -46,16 +51,30 @@ Page({
     if (userId !== '') {
       pageData.userId = userId
     }
+    if (refresh.detail === 'all') {
+      pageData.limit = this.data.articileListLength
+      pageData.offset = 0
+    }
     getArticleList(pageData).then((res) => {
       let list = res
+      let isBottom = false
       if (list.length > 0) {
         for (let i in list) {
           let time = new Date(list[i].create_time).getTime()
           list[i].create_time = apartTime(time)
         }
       }
+      if (list.length % 10 !== 0) {
+        isBottom = true
+      }
+      if (!refresh) {
+        list = this.data.articileList.concat(list)
+      }
+      wx.hideLoading()
       this.setData({
         articileList: list,
+        articileListLength: list.length,
+        isBottom
       })
     })
   },
@@ -129,10 +148,27 @@ Page({
   },
 
   onShow: function () {
+    this.setData({
+      pageSize: {
+        offset: 0,
+        limit: 10
+      },
+      isBottom: false,
+      articileListLength: 0
+    })
     this.getArticleListData()
   },
 
+  onReachBottom: function () {
+    if (!this.data.isBottom) {
+      this.setData({
+        ['pageSize.offset']: this.data.pageSize.offset + this.data.pageSize.limit,
+      })
+      this.getArticleListData(false)
+    }
+  },
+
   onUnload: function () {
-    destroyMobx(this)
+    // destroyMobx(this)
   },
 })

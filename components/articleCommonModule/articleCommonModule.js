@@ -43,10 +43,10 @@ Component({
   methods: {
     // 分享
     share() {},
-    
+
     // 跳转详情页
     toDetail(e) {
-      let id = e.target.dataset.item.id
+      let id = e.currentTarget.dataset.item.id
       wx.navigateTo({
         url: `/index/articleDetail/articleDetail?article_id=${id}`,
       })
@@ -78,14 +78,14 @@ Component({
             title: res.data,
             duration: 1000,
           })
-          this.triggerEvent('getArticleList')
+          this.triggerEvent('getArticleList', 'all')
         }
       })
     },
 
     // 授权完成
     completeAuth() {
-      this.triggerEvent("getArticleList")
+      this.triggerEvent("getArticleList", 'all')
     },
 
     // 显示全部内容

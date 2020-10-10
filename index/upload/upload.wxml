@@ -5,17 +5,20 @@
   <view class="title title-common" hover-class="none" hover-stop-propagation="false">
     <view class="title-top title-top-common" hover-class="none" hover-stop-propagation="false">
       <text selectable="false" space="false" decode="false">文章标题</text>
-      <text selectable="false" space="false" decode="false" class="error-text" wx:if="{{showTitleError}}">请输入正确的文章标题</text>
+      <text selectable="false" space="false" decode="false" class="error-text"
+        wx:if="{{showTitleError}}">请输入正确的文章标题</text>
     </view>
     <view class="title-bottom title-bottom-common" hover-class="none" hover-stop-propagation="false">
-      <input type="text" placeholder="请输入文章标题" placeholder-class='input-holder-style' bindinput="inputTitle" maxlength="30"/>
+      <input type="text" placeholder="请输入文章标题" placeholder-class='input-holder-style' bindinput="inputTitle"
+        maxlength="30" />
     </view>
   </view>
   <!-- 文章内容 -->
   <view class="content title-common" hover-class="none" hover-stop-propagation="false">
     <view class="content-top title-top-common" hover-class="none" hover-stop-propagation="false">
       <text selectable="false" space="false" decode="false">文章内容</text>
-      <text selectable="false" space="false" decode="false" class="error-text" wx:if="{{showContentError}}">请输入正确的文章内容</text>
+      <text selectable="false" space="false" decode="false" class="error-text"
+        wx:if="{{showContentError}}">请输入正确的文章内容</text>
     </view>
     <view class="content-bottom title-bottom-common" hover-class="none" hover-stop-propagation="false">
       <textarea placeholder="请输入文章内容" placeholder-class='input-holder-style' bindinput="inputContent"></textarea>
@@ -27,9 +30,18 @@
       上传图片
     </view>
     <view class="image-box">
-      <image class="upload-list-item" src="{{item}}" wx:for="{{previewList}}" wx:key="index" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload=""></image>
-      <view class="upload-box" bindtap="uploadImage" hover-class="none" hover-stop-propagation="false" wx:if="{{previewList.length<9}}">
-        <image class="upload-box-img" src="https://wzrylt.oss-cn-beijing.aliyuncs.com/miniWeb/pic-2.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload=""></image>
+      <view class="upload-list-box" wx:for="{{previewList}}" wx:key="index">
+        <image class="upload-list-item" src="{{item}}" mode="aspectFit|aspectFill|widthFix" lazy-load="false"
+          binderror="" bindload=""></image>
+        <image class="delete-img-icon"
+          src="https://wzrylt.oss-cn-beijing.aliyuncs.com/miniWeb/f7820570-b9e4-4dd8-9e12-61b84c0e0a7a.png"
+          bindtap="deleteImg" data-index='{{index}}'>
+        </image>
+      </view>
+      <view class="upload-box" bindtap="uploadImage" hover-class="none" hover-stop-propagation="false"
+        wx:if="{{previewList.length<9}}">
+        <image class="upload-box-img" src="https://wzrylt.oss-cn-beijing.aliyuncs.com/miniWeb/pic-2.png"
+          mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload=""></image>
       </view>
     </view>
   </view>

@@ -3,9 +3,10 @@
   padding: 0 30rpx;
 }
 
-.input-holder-style{
+.input-holder-style {
   color: #ccc;
 }
+
 /* 文章标题 */
 .title-common {
   padding: 30rpx 0;
@@ -19,9 +20,10 @@
   display: flex;
   justify-content: space-between;
 }
-.error-text{
+
+.error-text {
   font-size: 28rpx;
-  color:#CC0000;
+  color: #CC0000;
 }
 
 .title-bottom-common {
@@ -74,8 +76,19 @@
   flex-wrap: wrap;
 }
 
+.upload-list-box {
+  position: relative;
+}
 
-.image-box>image {
+.delete-img-icon {
+  position: absolute;
+  right: 30rpx;
+  top: 0;
+  width: 60rpx;
+  height: 60rpx;
+}
+
+.upload-list-item {
   width: 200rpx;
   height: 200rpx;
   border: 1px solid #ddd;

@@ -1,7 +1,16 @@
 // index/upload/upload.js
-import { uploadImg, publsihArticle } from '../../api/index'
-import { getStorageSync } from '../../utils/util'
-import { CACHE_KEY } from '../../lib/config'
+import {
+  uploadImg,
+  publsihArticle,
+  checkTextLegal,
+  checkImageLegal
+} from '../../api/index'
+import {
+  getStorageSync
+} from '../../utils/util'
+import {
+  CACHE_KEY
+} from '../../lib/config'
 Page({
   /**
    * 页面的初始数据
@@ -17,6 +26,14 @@ Page({
     showTitleError: false,
     showContentError: false,
     publishLock: true,
+  },
+
+  // 删除图片
+  deleteImg(e) {
+    this.data.previewList.splice(e.currentTarget.dataset.index, 1)
+    this.setData({
+      previewList: this.data.previewList
+    })
   },
 
   // 检查参数
@@ -54,23 +71,68 @@ Page({
     })
     let paramsRight = this.checkParams()
     if (paramsRight) {
-      publsihArticle(this.data.formData).then((res) => {
-        if (res.status === 200) {
+      checkTextLegal({
+        content: this.data.formData.title + this.data.formData.content
+      }).then(({
+        data
+      }) => {
+        if (data.EvilTokens.length < 1) {
+          if (this.data.formData.img !== '') {
+            checkImageLegal({
+              url: this.data.formData.img
+            }).then(({
+              data
+            }) => {
+              if (data.Suggestion !== 'PASS') {
+                wx.showToast({
+                  title: '图片违规',
+                  icon: "none"
+                })
+              } else {
+                // 合法
+                publsihArticle(this.data.formData).then((res) => {
+                  if (res.status === 200) {
+                    wx.hideLoading()
+                    wx.showToast({
+                      title: '发布成功',
+                      duration: 2000,
+                    })
+                    setTimeout(() => {
+                      wx.switchTab({
+                        url: '/pages/index/index',
+                      })
+                    }, 2000)
+                  }
+                })
+              }
+            })
+          } else {
+            // 合法
+            publsihArticle(this.data.formData).then((res) => {
+              if (res.status === 200) {
+                wx.hideLoading()
+                wx.showToast({
+                  title: '发布成功',
+                  duration: 2000,
+                })
+                setTimeout(() => {
+                  wx.switchTab({
+                    url: '/pages/index/index',
+                  })
+                }, 2000)
+              }
+            })
+          }
+
+        } else {
           wx.hideLoading()
           wx.showToast({
-            title: '发布成功',
-            duration: 2000,
+            title: '内容违规',
+            icon: "none"
           })
-          setTimeout(() => {
-            wx.switchTab({
-              url: '/pages/index/index',
-            })
-          }, 2000)
         }
       })
-      // publishLock
     }
-    // console.log(paramsRight)
   },
 
   // 上传图片

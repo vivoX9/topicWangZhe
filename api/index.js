@@ -90,3 +90,21 @@ export const publishComment = params => {
     })
   })
 }
+
+// 检测发布文字内容是否违规
+export const checkTextLegal = params => {
+  return new Promise(resolve => {
+    request.get(API_KEY.checkTextLegal, params).then(res => {
+      resolve(res)
+    })
+  })
+}
+
+// 检测发布图片内容是否违规
+export const checkImageLegal = params => {
+  return new Promise(resolve => {
+    request.get(API_KEY.checkImageLegal, params).then(res => {
+      resolve(res)
+    })
+  })
+}

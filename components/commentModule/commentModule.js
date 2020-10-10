@@ -7,7 +7,8 @@ import {
 import {
   getArticleCommentData,
   publishComment,
-  likeComment
+  likeComment,
+  checkTextLegal
 } from '../../api/index'
 import {
   CACHE_KEY
@@ -92,25 +93,46 @@ Component({
 
     // 发表评论
     sendComment() {
+      wx.showLoading({
+        title: "加载中..."
+      })
       if (hasUserInfo()) {
-        publishComment({
-          article_id: this.data.articleId,
-          user_id: getStorageSync(CACHE_KEY.userid),
+        checkTextLegal({
           content: this.data.commentContent
-        }).then(res => {
-          this.setData({
-            showCommentBox: false
-          })
-          wx.showToast({
-            title: '发表成功',
-            icon: "success",
-            duration: 1500
-          })
-          this.ArticleComment({
-            id: this.data.articleId,
-            refresh: true
-          })
+        }).then(({
+          data
+        }) => {
+          if (data.EvilTokens.length < 1) {
+            // 合法
+            publishComment({
+              article_id: this.data.articleId,
+              user_id: getStorageSync(CACHE_KEY.userid),
+              content: this.data.commentContent
+            }).then(res => {
+              this.setData({
+                showCommentBox: false
+              })
+              wx.hideLoading()
+              wx.showToast({
+                title: '发表成功',
+                icon: "success",
+                duration: 1500
+              })
+              this.ArticleComment({
+                id: this.data.articleId,
+                refresh: true
+              })
+            })
+          } else {
+            wx.hideLoading()
+            wx.showToast({
+              title: '内容违规！',
+              icon: "none"
+            })
+          }
         })
+        return
+
       } else {
         this.setData({
           showAuth: true
