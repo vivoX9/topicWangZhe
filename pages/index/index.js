@@ -144,7 +144,7 @@ Page({
 
   onLoad: function () {
     this.initData()
-    this.storeBindings = createMobx(this, ['numA'], ['updateLikeCount'])
+    // this.storeBindings = createMobx(this, ['numA'], ['updateLikeCount'])
   },
 
   onShow: function () {
