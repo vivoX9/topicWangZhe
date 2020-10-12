@@ -3,8 +3,8 @@ export class requestData {
     this.header = {
       'content-type': 'application/x-www-form-urlencoded'
     }
-    // this.URL = 'https://www.wzrylt.com'
-    this.URL = 'http://172.17.14.166:3030'
+    this.URL = 'https://www.wzrylt.com'
+    // this.URL = 'http://172.17.14.166:3030'
   }
 
   // get方法
