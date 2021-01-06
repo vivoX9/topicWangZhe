@@ -1,10 +1,15 @@
+const URL = 'http://0.0.0.0:3030'
+export {
+  URL
+}
 export class requestData {
   constructor() {
     this.header = {
-      'content-type': 'application/x-www-form-urlencoded'
+      'content-type': 'application/x-www-form-urlencoded',
+      'api-check': 'wuJunJie'
     }
-    this.URL = 'https://www.wzrylt.com'
-    // this.URL = 'http://172.17.14.166:3030'
+    // this.URL = 'https://www.wzrylt.com'
+    this.URL = 'http://0.0.0.0:3030'
   }
 
   // get方法

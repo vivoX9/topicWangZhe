@@ -47,4 +47,6 @@
   </view>
   <!-- 立即发布 -->
   <view class="publish" bindtap="publish">立即发布</view>
+  <!-- 授权 -->
+  <auth showAuth="{{showAuth}}" bindcompleteAuth="completeAuth"></auth>
 </view>

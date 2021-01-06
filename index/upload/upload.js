@@ -6,10 +6,14 @@ import {
   checkImageLegal
 } from '../../api/index'
 import {
+  URL
+} from "../../utils/request"
+import {
   getStorageSync
 } from '../../utils/util'
 import {
-  CACHE_KEY
+  CACHE_KEY,
+  API_KEY
 } from '../../lib/config'
 Page({
   /**
@@ -23,9 +27,18 @@ Page({
       img: '',
       userId: '',
     },
+    showAuth: false,
     showTitleError: false,
     showContentError: false,
     publishLock: true,
+  },
+
+  // 完成授权
+  completeAuth(e) {
+    this.setData({
+      showAuth: false,
+      ['formData.userId']: getStorageSync(CACHE_KEY.userid),
+    })
   },
 
   // 删除图片
@@ -66,9 +79,12 @@ Page({
 
   // 保存
   publish() {
-    wx.showLoading({
-      title: '加载中...',
-    })
+    if (!this.data.formData.userId) {
+      this.setData({
+        showAuth: true
+      })
+      return
+    }
     let paramsRight = this.checkParams()
     if (paramsRight) {
       checkTextLegal({
@@ -91,6 +107,9 @@ Page({
               } else {
                 // 合法
                 publsihArticle(this.data.formData).then((res) => {
+                  wx.showLoading({
+                    title: '加载中...',
+                  })
                   if (res.status === 200) {
                     wx.hideLoading()
                     wx.showToast({
@@ -141,7 +160,7 @@ Page({
       count: 9,
       success: (res) => {
         if (res.errMsg === 'chooseImage:ok') {
-          let uploadHtpUrl = 'https://www.wzrylt.com/api/upload/img'
+          let uploadHtpUrl = URL + API_KEY.uploadImg
           wx.uploadFile({
             filePath: res.tempFilePaths[0],
             name: 'file',
@@ -183,7 +202,11 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {},
+  onLoad: function (options) {
+    this.setData({
+      ['formData.userId']: getStorageSync(CACHE_KEY.userid) || ''
+    })
+  },
 
   /**
    * 生命周期函数--监听页面初次渲染完成

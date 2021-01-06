@@ -49,7 +49,7 @@ Page({
       getStorageSync(CACHE_KEY.userid) :
       ''
     if (userId !== '') {
-      pageData.userId = userId
+      pageData.user_id = userId
     }
     if (refresh.detail === 'all') {
       pageData.limit = this.data.articileListLength

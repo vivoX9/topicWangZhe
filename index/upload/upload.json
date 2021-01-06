@@ -1,4 +1,6 @@
 {
-  "navigationBarTitleText":"发布",
-  "usingComponents": {}
+  "navigationBarTitleText": "发布",
+  "usingComponents": {
+    "auth": "../../components/auth/auth"
+  }
 }
