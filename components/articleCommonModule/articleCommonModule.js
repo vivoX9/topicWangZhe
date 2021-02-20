@@ -72,7 +72,7 @@ Component({
         title: '加载中',
       })
       likeArticle(params).then((res) => {
-        if (res.status == 200) {
+        if (res.code == 200) {
           wx.hideLoading()
           wx.showToast({
             title: res.data,

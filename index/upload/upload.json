@@ -1,6 +1,7 @@
 {
   "navigationBarTitleText": "发布",
   "usingComponents": {
-    "auth": "../../components/auth/auth"
+    "auth": "../../components/auth/auth",
+    "van-icon": "@vant/weapp/icon/index"
   }
 }

@@ -1,6 +1,7 @@
 /* index/upload/upload.wxss */
 .upload-cotainer {
   padding: 0 30rpx;
+  padding-bottom: 150rpx;
 }
 
 .input-holder-style {
@@ -78,29 +79,27 @@
 
 .upload-list-box {
   position: relative;
+  margin-bottom: 20rpx;
 }
 
 .delete-img-icon {
   position: absolute;
-  right: 30rpx;
-  top: 0;
-  width: 60rpx;
-  height: 60rpx;
+  right: 15rpx;
+  top: -20rpx;
 }
 
 .upload-list-item {
-  width: 200rpx;
-  height: 200rpx;
+  width: 196rpx;
+  height: 196rpx;
   border: 1px solid #ddd;
   border-radius: 8rpx;
   vertical-align: bottom;
-  margin-right: 20rpx;
   margin-right: 30rpx;
 }
 
 .upload-box {
-  width: 200rpx;
-  height: 200rpx;
+  width: 196rpx;
+  height: 196rpx;
   background: #eee;
   justify-content: center;
   display: flex;
@@ -108,6 +107,7 @@
   align-items: center;
   border: 1px solid #ddd;
   border-radius: 8rpx;
+  margin-bottom: 20rpx;
 }
 
 .upload-box image {

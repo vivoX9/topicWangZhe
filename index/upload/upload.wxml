@@ -10,7 +10,7 @@
     </view>
     <view class="title-bottom title-bottom-common" hover-class="none" hover-stop-propagation="false">
       <input type="text" placeholder="请输入文章标题" placeholder-class='input-holder-style' bindinput="inputTitle"
-        maxlength="30" />
+        maxlength="20" />
     </view>
   </view>
   <!-- 文章内容 -->
@@ -21,7 +21,8 @@
         wx:if="{{showContentError}}">请输入正确的文章内容</text>
     </view>
     <view class="content-bottom title-bottom-common" hover-class="none" hover-stop-propagation="false">
-      <textarea placeholder="请输入文章内容" placeholder-class='input-holder-style' bindinput="inputContent"></textarea>
+      <textarea placeholder="请输入文章内容" placeholder-class='input-holder-style' bindinput="inputContent"
+        maxlength="2000"></textarea>
     </view>
   </view>
   <!-- 上传图片 -->
@@ -33,10 +34,7 @@
       <view class="upload-list-box" wx:for="{{previewList}}" wx:key="index">
         <image class="upload-list-item" src="{{item}}" mode="aspectFit|aspectFill|widthFix" lazy-load="false"
           binderror="" bindload=""></image>
-        <image class="delete-img-icon"
-          src="https://wzrylt.oss-cn-beijing.aliyuncs.com/miniWeb/f7820570-b9e4-4dd8-9e12-61b84c0e0a7a.png"
-          bindtap="deleteImg" data-index='{{index}}'>
-        </image>
+        <van-icon name="close" class="delete-img-icon" bindtap="deleteImg" data-index='{{index}}' size='20px' />
       </view>
       <view class="upload-box" bindtap="uploadImage" hover-class="none" hover-stop-propagation="false"
         wx:if="{{previewList.length<9}}">

@@ -1,14 +1,21 @@
 const URL = 'http://0.0.0.0:3030'
+// const URL = ' https://www.wzrylt.com/api/'
+import {
+  queryToken,
+  queryUserId
+} from "./util"
 export {
   URL
 }
 export class requestData {
   constructor() {
+    console.log(queryToken())
     this.header = {
       'content-type': 'application/x-www-form-urlencoded',
-      'api-check': 'wuJunJie'
+      'api-check': 'wuJunJie',
+
     }
-    // this.URL = 'https://www.wzrylt.com'
+    // this.URL = ' https://www.wzrylt.com/api'
     this.URL = 'http://0.0.0.0:3030'
   }
 
@@ -46,6 +53,8 @@ export class requestData {
   }
   // 请求封装
   requestFun(URL, METHOD, DATA, HEADER = this.header) {
+    HEADER['token'] = queryToken()
+    HEADER['u'] = queryUserId()
     return new Promise((resolve, reject) => {
       wx.request({
         url: URL,

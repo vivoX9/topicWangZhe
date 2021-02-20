@@ -125,3 +125,17 @@ export const hasUserInfo = () => {
   userInfo = userInfo ? true : false
   return userInfo
 }
+
+// 查询token
+export const queryToken = () => {
+  let userInfo = getStorageSync(CACHE_KEY.userInfo)
+  let token = userInfo ? JSON.parse(userInfo).token : ''
+  return token
+}
+
+// 查询userId
+export const queryUserId = () => {
+  let userInfo = getStorageSync(CACHE_KEY.userInfo)
+  let userId = userInfo ? JSON.parse(userInfo).id : ''
+  return userId
+}

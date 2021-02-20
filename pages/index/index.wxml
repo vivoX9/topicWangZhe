@@ -16,7 +16,7 @@
 				</view>
 				<view class="main">
 					<button bindtap="pay" wx:if="{{false}}">立即支付</button>
-					<view class="main-title" bindtap="updateLikeCount">帖子</view>
+					<view class="main-title" bindtap="updateLikeCount">推荐</view>
 					<articleCommonModule articleListData='{{articileList}}' bind:getArticleList="getArticleListData">
 					</articleCommonModule>
 				</view>

@@ -40,7 +40,7 @@ export const publsihArticle = (params) => {
 // 点赞文章
 export const likeArticle = (params) => {
   return new Promise((resolve) => {
-    request.post(API_KEY.likeArticle, params).then((data) => {
+    request.get(API_KEY.likeArticle, params).then((data) => {
       resolve(data)
     })
   })

@@ -1,4 +1,6 @@
 /**index.wxss**/
+
+
 .index {
   padding-bottom: 140rpx;
   box-sizing: border-box;

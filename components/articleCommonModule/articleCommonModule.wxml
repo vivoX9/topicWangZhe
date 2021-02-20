@@ -10,12 +10,13 @@
 				<view class="top-right">{{item.create_time}}</view>
 			</view>
 			<view class="content-module">
-				<!-- <view class="content" bindtap="toDetail" data-item="{{item}}">{{showAllContent?item.content:item.handle_content}}</view> -->
-				<view class="content" bindtap="toDetail" data-item="{{item}}">{{item.content}}</view>
-				<view wx:if="{{item.showAll}}">
-					<view class="show-check" wx:if="{{item.showAll&&!showAllContent}}" bindtap="showAllContent">展开所有内容</view>
-					<view class="show-check" wx:else bindtap="showAllContent">收起</view>
+				<view class="content-text-module">
+					<view class="content limit-two-text" bindtap="toDetail" data-item="{{item}}">{{item.content}}</view>
 				</view>
+				<view class="content-img-module" wx:if='{{item.pic.length>0}}'>
+					<image src="{{item.pic[0]}}"></image>
+				</view>
+
 			</view>
 			<view class="msg-module">
 				<view class="like-module msg-common-module" bindtap="like" data-item="{{item}}">
@@ -24,7 +25,7 @@
 				</view>
 				<view class="comment-module msg-common-module" bindtap="toDetail" data-item="{{item}}">
 					<image src="{{iconSrc.comment}}"></image>
-					<text>评论（{{item.comment_count}}）</text>
+					<text>评论（{{item.comment_count||0}}）</text>
 				</view>
 				<view class="share-module msg-common-module" bindtap="share">
 					<image src="{{iconSrc.share}}"></image>

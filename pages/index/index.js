@@ -62,6 +62,7 @@ Page({
         for (let i in list) {
           let time = new Date(list[i].create_time).getTime()
           list[i].create_time = apartTime(time)
+          list[i].pic = list[i].pic ? list[i].pic.split(",") : []
         }
       }
       if (list.length % 10 !== 0) {

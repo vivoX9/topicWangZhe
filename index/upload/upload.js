@@ -24,7 +24,7 @@ Page({
     formData: {
       title: '',
       content: '',
-      img: '',
+      pic: '',
       userId: '',
     },
     showAuth: false,
@@ -53,7 +53,7 @@ Page({
   checkParams() {
     this.setData({
       ['formData.userId']: getStorageSync(CACHE_KEY.userid),
-      ['formData.img']: this.data.previewList.join(','),
+      ['formData.pic']: this.data.previewList.join(','),
     })
     let formDataNow = this.data.formData
     if (formDataNow.title === '') {
@@ -87,71 +87,43 @@ Page({
     }
     let paramsRight = this.checkParams()
     if (paramsRight) {
+      wx.showLoading({
+        title: '发布中...',
+      })
       checkTextLegal({
         content: this.data.formData.title + this.data.formData.content
       }).then(({
         data
       }) => {
-        if (data.EvilTokens.length < 1) {
-          if (this.data.formData.img !== '') {
-            checkImageLegal({
-              url: this.data.formData.img
-            }).then(({
-              data
-            }) => {
-              if (data.Suggestion !== 'PASS') {
-                wx.showToast({
-                  title: '图片违规',
-                  icon: "none"
-                })
-              } else {
-                // 合法
-                publsihArticle(this.data.formData).then((res) => {
-                  wx.showLoading({
-                    title: '加载中...',
-                  })
-                  if (res.status === 200) {
-                    wx.hideLoading()
-                    wx.showToast({
-                      title: '发布成功',
-                      duration: 2000,
-                    })
-                    setTimeout(() => {
-                      wx.switchTab({
-                        url: '/pages/index/index',
-                      })
-                    }, 2000)
-                  }
-                })
-              }
-            })
-          } else {
-            // 合法
-            publsihArticle(this.data.formData).then((res) => {
-              if (res.status === 200) {
-                wx.hideLoading()
-                wx.showToast({
-                  title: '发布成功',
-                  duration: 2000,
-                })
-                setTimeout(() => {
-                  wx.switchTab({
-                    url: '/pages/index/index',
-                  })
-                }, 2000)
-              }
-            })
-          }
-
+        if (data === '通过') {
+          this.publishNow()
         } else {
           wx.hideLoading()
           wx.showToast({
-            title: '内容违规',
+            title: data,
             icon: "none"
           })
         }
       })
     }
+  },
+
+  // 检测合法开始发布
+  publishNow() {
+    publsihArticle(this.data.formData).then((res) => {
+      if (res.code === 200) {
+        wx.hideLoading()
+        wx.showToast({
+          title: '发布成功',
+          duration: 2000,
+        })
+        setTimeout(() => {
+          wx.switchTab({
+            url: '/pages/index/index',
+          })
+        }, 2000)
+      }
+    })
   },
 
   // 上传图片
@@ -160,6 +132,10 @@ Page({
       count: 9,
       success: (res) => {
         if (res.errMsg === 'chooseImage:ok') {
+          wx.showLoading({
+            title: '上传中...',
+            mask: true
+          })
           let uploadHtpUrl = URL + API_KEY.uploadImg
           wx.uploadFile({
             filePath: res.tempFilePaths[0],
@@ -168,15 +144,30 @@ Page({
             formData: {
               image: 'test',
             },
-            success: (res) => {
-              let data = JSON.parse(res.data)
-              wx.showToast({
-                title: '上传成功',
-              })
-              let list = this.data.previewList
-              list.push(data.data.src)
-              this.setData({
-                previewList: list,
+            success: (res1) => {
+              let result = JSON.parse(res1.data)
+              checkImageLegal({
+                url: result.data
+              }).then(({
+                data
+              }) => {
+                if (data !== '通过') {
+                  wx.showToast({
+                    title: data,
+                    icon: "none"
+                  })
+                } else {
+                  // 合法
+                  wx.hideLoading()
+                  wx.showToast({
+                    title: '上传成功',
+                  })
+                  let list = this.data.previewList
+                  list.push(result.data)
+                  this.setData({
+                    previewList: list,
+                  })
+                }
               })
             },
           })
